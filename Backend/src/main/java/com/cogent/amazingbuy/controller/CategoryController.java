@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -28,6 +29,7 @@ public class CategoryController {
 	
 	
 	//Find by id
+
 	@GetMapping("/category/{id}")
 	public ResponseEntity<Category> getCategoryByID(long id) throws ResourceNotFoundException
 	{
@@ -39,6 +41,7 @@ public class CategoryController {
 	}
 	
 	
+
 //	public ResponseEntity<List<Product>> getProductListFromCategory(List<Category> categorylist) 
 //			throws ResourceNotFoundException
 //			{
