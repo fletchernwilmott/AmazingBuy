@@ -2,6 +2,7 @@ package com.cogent.amazingbuy.controller;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
@@ -15,6 +16,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.cogent.amazingbuy.dao.ProductRepository;
@@ -36,7 +39,6 @@ public class ProductController {
 	}
 	
 	// get products by productId
-	// needs to throw custom ResourceNotFoundException
 	@GetMapping("/products/{id}")
 	public ResponseEntity<Product> getProductById(@PathVariable(value = "id") Long productId) throws ResourceNotFoundException {
 		Product p = productRepository.findById(productId)
@@ -48,23 +50,21 @@ public class ProductController {
 	}
 	
 	
-	// UNFINISHED
 	// get products by categoryId
+	// figure out pageable later
 //	@GetMapping("/products/category/{id}")
 //	public List<Product> getProductsByCaregoryId(@PathVariable(value = "id") Long id) {
-//		Pageable pageable = PageRequest.of(0, 20);
-//		//why do i need to cast to list
-//		return (List<Product>) productRepository.findByCategoryId(id, pageable);
+//		return productRepository.findByCategoryId(id);
 //	}
-//	
-//	
-//	// SHOULD THIS BE PAGEABLE
-//	// get product by name
-//	// we want to find by approximate name and do we want to return a pageable?
-//	@GetMapping("/products/name/{name}")
-//	public ResponseEntity<Product> getProductsByName(@PathVariable(value = "name") String productName) {
-//		return productRepository.findByProductName(productName);
-//	}
+
+
+	// this was previously mapped to @GetMapping("/products/{name}")
+	// this was causing an error with the already mapped @GetMapping("/products/{id}")
+	// so we had to re-map this @GetMapping("/productname/{name}")
+	@GetMapping("/productname/{name}")
+	public List<Product> getProductsByName(@PathVariable("name") String name) {
+		return productRepository.findProductByName(name);
+	}
 	
 	// add product
 	// seller only
