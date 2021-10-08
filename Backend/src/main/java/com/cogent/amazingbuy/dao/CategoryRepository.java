@@ -8,4 +8,6 @@ import com.cogent.amazingbuy.model.Category;
 
 @CrossOrigin()
 @RepositoryRestResource(collectionResourceRel = "Category", path = "category")
-public interface CategoryRepository extends JpaRepository<Category, Long>{}
+public interface CategoryRepository extends JpaRepository<Category, Long>{
+	
+}

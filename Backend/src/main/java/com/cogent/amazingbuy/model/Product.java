@@ -10,7 +10,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "product")
+@Table(name = "products")
 public class Product {
 	
 	@Id
@@ -61,7 +61,7 @@ public class Product {
 		this.productLongDescription = productLongDescription;
 		this.productShortDescription = productShortDescription;
 		this.productRating = productRating;
-		this.category = category;
+//		this.category = category;
 //		this.order = order;
 	}
 
