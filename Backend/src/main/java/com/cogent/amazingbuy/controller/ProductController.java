@@ -1,11 +1,15 @@
 package com.cogent.amazingbuy.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.rest.webmvc.ResourceNotFoundException;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -43,6 +47,30 @@ public class ProductController {
 		return ResponseEntity.ok().body(p);
 	}
 	
+	// get products by categoryId
+	@GetMapping("/products/category/{id}")
+	public List<Product> getProductsByCaregoryId(@PathVariable(value = "id") Long id) {
+		Pageable pageable = PageRequest.of(0, 20);
+		//why do i need to cast to list
+		return (List<Product>) productRepository.findByCategoryId(id, pageable);
+	}
+	
+	// get product by name
+	// we want to find by approximate name and do we want to return a pageable?
+	@GetMapping("/products/name/{name}")
+	public ResponseEntity<Product> getProductsByName(@PathVariable(value = "name") String productName) {
+		
+		return productRepository.findByProductName(productName);
+	}
+	
+	// add product
+	// seller only
+	@PostMapping("/addProduct")
+	public String addProduct(@RequestBody Product p){
+		productRepository.save(p);
+		return "product added";
+	}
+	
 	// update
 	// seller only
 	@PutMapping("/products/{id}")
@@ -57,18 +85,25 @@ public class ProductController {
 	}
 	
 	
-	// get one product by categoryId
-	// for viewing product details
+
 	
 	
-	// add
-	@PostMapping("/addProduct")
-	public String addProduct(@RequestBody Product p){
-		productRepository.save(p);
-		return "success";
+	
+
+	
+	
+
+	
+	// delete product
+	// seller only
+	// dimple returns a map here instead, not sure why
+	@DeleteMapping("/products/{id}")
+	public String deleteProduct(@PathVariable(value = "id") Long productId) throws ResourceNotFoundException {
+		Product p = productRepository.findById(productId)
+				.orElseThrow(() -> new ResourceNotFoundException("Couldn't find a product with that Id number"));
+		productRepository.delete(p);
+		return "product deleted";
 	}
-	
-	
 	
 
 }
