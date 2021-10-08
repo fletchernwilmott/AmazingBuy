@@ -26,7 +26,7 @@ public class InitializerTestController {
 	private ProductRepository pR;
 	
 	
-	@RequestMapping("/")
+//	@RequestMapping("/")
 	public void starterValue() {
 //		Account a = new Account("Mike", "mike@gmail.com", "1234", "Seller", "11-05-1989");
 //		Account b = new Account("Zack", "zack@gmail.com", "1234", "Buyer", "05-09-1999");
@@ -38,7 +38,9 @@ public class InitializerTestController {
 //		Category c2 = new Category(102,"Vegetables");
 //		cR.save(c1);
 //		cR.save(c2);
-//		
+
+		
+
 //		Product p1 = new Product("Orange", "image", 0.77, 20,"1-long descrption", "5-short description", 4.8);
 //		Product p2 = new Product("Apple", "image", 0.99, 280,"2-long descrption", "6-short description", 5);
 //		Product p3 = new Product("Potato", "image", 1.57, 40,"3-long descrption", "7-short description", 3.8);
@@ -48,7 +50,7 @@ public class InitializerTestController {
 //		pR.save(p2);
 //		pR.save(p3);
 //		pR.save(p4);
-//		
+
 		
 	}
 

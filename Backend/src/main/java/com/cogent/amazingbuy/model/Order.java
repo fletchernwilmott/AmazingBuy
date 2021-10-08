@@ -34,6 +34,7 @@ public class Order {
 	@Column(name = "timestamp")
 	private String timestamp;
 	
+	@Column(name = "products")
 	@OneToMany(mappedBy = "order", cascade = CascadeType.ALL)
 	private List<Product> product;
 	

@@ -38,6 +38,7 @@ public class OrderController {
 		return ResponseEntity.ok().body(o);
 	}
 	
+	// we need to fix the relationship
 	// create order
 	@PostMapping("/createOrder")
 	public String createOrder(@RequestBody Order o) {
@@ -56,6 +57,7 @@ public class OrderController {
 		return ResponseEntity.ok(updatedOrder);
 	}
 	
+	// 
 	// cancel order / delete
 	@DeleteMapping("/deleteOrder/{id}")
 	public String deleteOrder(@PathVariable(value = "id") Long orderId) throws ResourceNotFoundException {
