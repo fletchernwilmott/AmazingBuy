@@ -47,6 +47,8 @@ public class ProductController {
 		return ResponseEntity.ok().body(p);
 	}
 	
+	
+	// UNFINISHED
 	// get products by categoryId
 	@GetMapping("/products/category/{id}")
 	public List<Product> getProductsByCaregoryId(@PathVariable(value = "id") Long id) {
@@ -55,11 +57,12 @@ public class ProductController {
 		return (List<Product>) productRepository.findByCategoryId(id, pageable);
 	}
 	
+	
+	// SHOULD THIS BE PAGEABLE
 	// get product by name
 	// we want to find by approximate name and do we want to return a pageable?
 	@GetMapping("/products/name/{name}")
 	public ResponseEntity<Product> getProductsByName(@PathVariable(value = "name") String productName) {
-		
 		return productRepository.findByProductName(productName);
 	}
 	
@@ -84,16 +87,6 @@ public class ProductController {
 		return ResponseEntity.ok(updatedProduct);
 	}
 	
-	
-
-	
-	
-	
-
-	
-	
-
-	
 	// delete product
 	// seller only
 	// dimple returns a map here instead, not sure why
@@ -104,6 +97,5 @@ public class ProductController {
 		productRepository.delete(p);
 		return "product deleted";
 	}
-	
 
 }
