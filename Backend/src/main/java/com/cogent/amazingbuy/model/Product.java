@@ -41,7 +41,7 @@ public class Product {
 
 	// this is the foreign key
 	@ManyToOne
-	@JoinColumn(name = "category_id", nullable = false)
+	@JoinColumn(name = "categoryId")
 	private Category category;
 	
 	// order_id is the foreign key 
@@ -49,15 +49,11 @@ public class Product {
 	@JoinColumn(name = "order_id")
 	private Order order;
 
-	public Product() {
-		super();
-	}
+	public Product() {}
 
-	public Product(Long productId, String productName, String productImageURL, double productPrice, int productQuantity,
-			String productLongDescription, String productShortDescription, double productRating, Category category,
-			Order order) {
+	public Product(String productName, String productImageURL, double productPrice, int productQuantity,
+			String productLongDescription, String productShortDescription, double productRating) {
 		super();
-		this.productId = productId;
 		this.productName = productName;
 		this.productImageURL = productImageURL;
 		this.productPrice = productPrice;
@@ -66,7 +62,7 @@ public class Product {
 		this.productShortDescription = productShortDescription;
 		this.productRating = productRating;
 		this.category = category;
-		this.order = order;
+//		this.order = order;
 	}
 
 	public Long getProductId() {
@@ -133,8 +129,8 @@ public class Product {
 		this.productRating = productRating;
 	}
 
-	public Category getCategory() {
-		return category;
+	public String getCategory() {
+		return category.getName();
 	}
 
 	public void setCategory(Category category) {
