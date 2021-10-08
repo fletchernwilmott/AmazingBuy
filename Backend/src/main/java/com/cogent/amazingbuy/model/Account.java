@@ -26,9 +26,8 @@ private String accountType;
 	@Column(name = "date_of_birth")
 private String dateOfBirth;
 @OneToMany(cascade = CascadeType.ALL, mappedBy = "account")
-private List<Orders> orders;
-public Account(long id, String fullName, String email, String password, String accountType, String dateOfBirth,
-		List<Orders> orders) {
+private List<Order> order;
+public Account(String fullName, String email, String password, String accountType, String dateOfBirth) {
 	super();
 	this.id = id;
 	this.fullName = fullName;
@@ -36,7 +35,7 @@ public Account(long id, String fullName, String email, String password, String a
 	this.password = password;
 	this.accountType = accountType;
 	this.dateOfBirth = dateOfBirth;
-	this.orders = orders;
+	this.order = order;
 }
 public Account() {
 	super();
@@ -78,16 +77,16 @@ public String getDateOfBirth() {
 public void setDateOfBirth(String dateOfBirth) {
 	this.dateOfBirth = dateOfBirth;
 }
-public List<Orders> getOrders() {
-	return orders;
+public List<Order> getOrder() {
+	return order;
 }
-public void setOrders(List<Orders> orders) {
-	this.orders = orders;
+public void setOrder(List<Order> order) {
+	this.order = order;
 }
 @Override
 public String toString() {
 	return "Account [id=" + id + ", fullName=" + fullName + ", email=" + email + ", password=" + password
-			+ ", accountType=" + accountType + ", dateOfBirth=" + dateOfBirth + "]";
+			+ ", accountType=" + accountType + ", dateOfBirth=" + dateOfBirth + ", Orders="+ order+"]";
 }
 
 
