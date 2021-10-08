@@ -50,21 +50,21 @@ public class ProductController {
 	
 	// UNFINISHED
 	// get products by categoryId
-	@GetMapping("/products/category/{id}")
-	public List<Product> getProductsByCaregoryId(@PathVariable(value = "id") Long id) {
-		Pageable pageable = PageRequest.of(0, 20);
-		//why do i need to cast to list
-		return (List<Product>) productRepository.findByCategoryId(id, pageable);
-	}
-	
-	
-	// SHOULD THIS BE PAGEABLE
-	// get product by name
-	// we want to find by approximate name and do we want to return a pageable?
-	@GetMapping("/products/name/{name}")
-	public ResponseEntity<Product> getProductsByName(@PathVariable(value = "name") String productName) {
-		return productRepository.findByProductName(productName);
-	}
+//	@GetMapping("/products/category/{id}")
+//	public List<Product> getProductsByCaregoryId(@PathVariable(value = "id") Long id) {
+//		Pageable pageable = PageRequest.of(0, 20);
+//		//why do i need to cast to list
+//		return (List<Product>) productRepository.findByCategoryId(id, pageable);
+//	}
+//	
+//	
+//	// SHOULD THIS BE PAGEABLE
+//	// get product by name
+//	// we want to find by approximate name and do we want to return a pageable?
+//	@GetMapping("/products/name/{name}")
+//	public ResponseEntity<Product> getProductsByName(@PathVariable(value = "name") String productName) {
+//		return productRepository.findByProductName(productName);
+//	}
 	
 	// add product
 	// seller only

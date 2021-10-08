@@ -2,6 +2,7 @@ package com.cogent.amazingbuy.model;
 
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -19,7 +20,7 @@ public class Order {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "order_id")
-	private Long ordertId;
+	private Long orderId;
 	
 	@Column(name = "is_paid")
 	private boolean isPaid;
@@ -33,19 +34,19 @@ public class Order {
 	@Column(name = "timestamp")
 	private String timestamp;
 	
-	@OneToMany(mappedBy = "products")
-	private List<Product> products;
+	@OneToMany(mappedBy = "order", cascade = CascadeType.ALL)
+	private List<Product> product;
 	
 	@ManyToOne
 	@JoinColumn(name = "account_id")
-	private Account accountId;
+	private Account account;
 
-	public Long getOrdertId() {
-		return ordertId;
+	public Long getOrderId() {
+		return orderId;
 	}
 
-	public void setOrdertId(Long ordertId) {
-		this.ordertId = ordertId;
+	public void setOrderId(Long orderId) {
+		this.orderId = orderId;
 	}
 
 	public boolean isPaid() {
@@ -80,27 +81,27 @@ public class Order {
 		this.timestamp = timestamp;
 	}
 
-	public List<Product> getProducts() {
-		return products;
+	public List<Product> getProduct() {
+		return product;
 	}
 
-	public void setProducts(List<Product> products) {
-		this.products = products;
+	public void setProduct(List<Product> product) {
+		this.product = product;
 	}
 
-	public Account getAccountId() {
-		return accountId;
+	public Long getAccount() {
+		return account.getId();
 	}
 
-	public void setAccountId(Account accountId) {
-		this.accountId = accountId;
+	public void setAccount(Account account) {
+		this.account = account;
 	}
 
 	@Override
 	public String toString() {
-		return "Order [ordertId=" + ordertId + ", isPaid=" + isPaid + ", isShipped=" + isShipped + ", shippingAddress="
-				+ shippingAddress + ", timestamp=" + timestamp + ", products=" + products + ", accountId=" + accountId
+		return "Order [ordertId=" + orderId + ", isPaid=" + isPaid + ", isShipped=" + isShipped + ", shippingAddress="
+				+ shippingAddress + ", timestamp=" + timestamp + ", products=" + product + ", account=" + account
 				+ "]";
 	}
-	
+
 }
