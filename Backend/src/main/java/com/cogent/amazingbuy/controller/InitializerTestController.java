@@ -32,8 +32,8 @@ public class InitializerTestController {
 //		Account b = new Account("Zack", "zack@gmail.com", "1234", "Buyer", "05-09-1999");
 //		aR.save(a);
 //		aR.save(b);
-//		List<Product> pList1 = new ArrayList<>();
-//		List<Product> pList2 = new ArrayList<>();
+		List<Product> pList1 = new ArrayList<>();
+		List<Product> pList2 = new ArrayList<>();
 //		Category c1 = new Category(101,"Fruits");
 //		Category c2 = new Category(102,"Vegetables");
 //		cR.save(c1);
