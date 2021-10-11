@@ -19,23 +19,15 @@ import com.cogent.amazingbuy.model.Product;
 // why do we need to keep this empty
 @CrossOrigin()
 // collectionResourceRel is the requestMapping and path is the url
-//@RepositoryRestResource(collectionResourceRel = "productsList", path = "products")
+@RepositoryRestResource(collectionResourceRel = "products-details", path = "product")
 public interface ProductRepository extends JpaRepository<Product, Long> {
-	
 	// findAll is pre-defined
-	
-//	@Query("from Products p where p.categoryId =: id")
-//	public List<Product> findByCategoryId(@RequestParam("id") Long id);
-
-	@Query("from Product p where p.productName LIKE '%'||:name||'%'")
+	@Query("from Product p where p.name LIKE '%'||:name||'%'")
 	public List<Product> findProductByName(@Param("name") String name);
+	
+	Page<Product> findByCategoryId(@RequestParam("id") Long id, Pageable pageable);
 
+	Page<Product> findByNameContaining(@RequestParam("name") String name, Pageable pageable);
 	
-	
-	//	Page<Product> findByCategoryId(@RequestParam("id") Long id, Pageable pageable);
-	
-	
-	
-
-	
+	Page<Product> findByOrdersId(@RequestParam("id") Long id, Pageable pageable);
 }

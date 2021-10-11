@@ -18,5 +18,6 @@ public interface AccountRepository extends JpaRepository<Account,Long>{
 	(value="FROM Account a WHERE a.email= :email and a.password = :password")
 	public Optional<Account> getOne(@Param("email") String email, 
 			  @Param("password") String password);
-
+	
+	
 }
