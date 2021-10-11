@@ -1,5 +1,6 @@
 package com.cogent.amazingbuy.model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -9,6 +10,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
@@ -20,7 +22,7 @@ public class Order {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "order_id")
-	private Long orderId;
+	private Long id;
 	
 	@Column(name = "is_paid")
 	private boolean isPaid;
@@ -34,20 +36,19 @@ public class Order {
 	@Column(name = "timestamp")
 	private String timestamp;
 	
-	@Column(name = "products")
-	@OneToMany(mappedBy = "order", cascade = CascadeType.ALL)
-	private List<Product> product;
+	@ManyToMany
+	private List<Product> products = new ArrayList<Product>();
 	
 	@ManyToOne
 	@JoinColumn(name = "account_id")
 	private Account account;
 
-	public Long getOrderId() {
-		return orderId;
+	public Long getId() {
+		return id;
 	}
 
-	public void setOrderId(Long orderId) {
-		this.orderId = orderId;
+	public void setId(Long orderId) {
+		this.id = orderId;
 	}
 
 	public boolean isPaid() {
@@ -82,13 +83,13 @@ public class Order {
 		this.timestamp = timestamp;
 	}
 
-	public List<Product> getProduct() {
-		return product;
-	}
-
-	public void setProduct(List<Product> product) {
-		this.product = product;
-	}
+//	public List<Product> getProduct() {
+//		return product;
+//	}
+//
+//	public void setProduct(List<Product> product) {
+//		this.product = product;
+//	}
 
 	public Long getAccount() {
 		return account.getId();
@@ -98,11 +99,35 @@ public class Order {
 		this.account = account;
 	}
 
+	public Order( boolean isPaid, boolean isShipped, String shippingAddress, String timestamp, Account account) {
+		super();
+		this.isPaid = isPaid;
+		this.isShipped = isShipped;
+		this.shippingAddress = shippingAddress;
+		this.timestamp = timestamp;
+//		this.product = product;
+		this.account = account;
+	}
+
 	@Override
 	public String toString() {
-		return "Order [ordertId=" + orderId + ", isPaid=" + isPaid + ", isShipped=" + isShipped + ", shippingAddress="
-				+ shippingAddress + ", timestamp=" + timestamp + ", products=" + product + ", account=" + account
+		return "Order [ordertId=" + id + ", isPaid=" + isPaid + ", isShipped=" + isShipped + ", shippingAddress="
+				+ shippingAddress + ", timestamp=" + timestamp + ", account=" + account + "Products IDs: "+ products
 				+ "]";
 	}
+
+	public List<Product> getProducts() {
+		return products;
+	}
+
+	public void setProducts(List<Product> products) {
+		this.products = products;
+	}
+
+	public Order() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+	
 
 }

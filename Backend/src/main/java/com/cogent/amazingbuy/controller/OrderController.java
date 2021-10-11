@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.cogent.amazingbuy.dao.OrderRepository;
 import com.cogent.amazingbuy.model.Order;
 
-@CrossOrigin
+@CrossOrigin()
 @RestController
 public class OrderController {
 	
@@ -47,23 +47,24 @@ public class OrderController {
 	}
 	
 	// update order // is shipped // is paid
-	@PutMapping("/updateOrder/{id}")
-	public ResponseEntity<Order> updateOrder(@PathVariable(value = "id") Long orderId, @RequestBody Order orderDetails) throws ResourceNotFoundException {
-		Order oldOrder = orderRepository.findById(orderId)
-				.orElseThrow(() -> new ResourceNotFoundException("Couldn't find an order with that Id number"));
-		oldOrder.setPaid(orderDetails.isPaid());
-		oldOrder.setShipped(orderDetails.isShipped());
-		Order updatedOrder = orderRepository.save(oldOrder);
-		return ResponseEntity.ok(updatedOrder);
-	}
+//	@PutMapping("/updateOrder/{id}")
+//	public ResponseEntity<Order> updateOrder(@PathVariable(value = "id") Long orderId, @RequestBody Order orderDetails) throws ResourceNotFoundException {
+//		Order oldOrder = orderRepository.findById(orderId)
+//				.orElseThrow(() -> new ResourceNotFoundException("Couldn't find an order with that Id number"));
+//		oldOrder.setProductsID(orderDetails.getProductsID());
+//		oldOrder.setPaid(orderDetails.isPaid());
+//		oldOrder.setShipped(orderDetails.isShipped());
+//		Order updatedOrder = orderRepository.save(oldOrder);
+//		return ResponseEntity.ok(updatedOrder);
+//	}
 	
 	// 
 	// cancel order / delete
 	@DeleteMapping("/deleteOrder/{id}")
 	public String deleteOrder(@PathVariable(value = "id") Long orderId) throws ResourceNotFoundException {
-		Order o = orderRepository.findById(orderId)
+		Order selectedOrder = orderRepository.findById(orderId)
 				.orElseThrow(() -> new ResourceNotFoundException("Couldn't find an order with that id"));
-		orderRepository.delete(o);
+		orderRepository.delete(selectedOrder);
 		return "order deleted";
 	}
 
