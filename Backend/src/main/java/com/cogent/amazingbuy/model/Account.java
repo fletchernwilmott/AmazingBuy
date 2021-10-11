@@ -31,8 +31,9 @@ public class Account {
 	@Column(name = "date_of_birth")
 	private String dateOfBirth;
 	
-	@OneToMany(cascade = CascadeType.ALL, mappedBy = "account")
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "account",orphanRemoval = true)
 	private List<Order> order;
+	
 	public Account(String fullName, String email, String password, String accountType, String dateOfBirth) {
 		super();
 		this.fullName = fullName;

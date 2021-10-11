@@ -19,7 +19,7 @@ public class CategoryController {
 	@Autowired
 	private CategoryRepository categoryRepository;
 	
-	//get all categories
+//	get all categories
 	@GetMapping("/category")
 	public List<Category> getAllCategories() {
 		List<Category> category_list = categoryRepository.findAll();
@@ -30,15 +30,15 @@ public class CategoryController {
 	
 	//Find by id
 
-	@GetMapping("/category/{id}")
-	public ResponseEntity<Category> getCategoryByID(long id) throws ResourceNotFoundException
-	{
-		Category category = categoryRepository.findById(id)
-				.orElseThrow(() -> 
-				new ResourceNotFoundException
-				("Category not found for this id : "+id));
-		return ResponseEntity.ok().body(category);
-	}
+//	@GetMapping("/category/{id}")
+//	public ResponseEntity<Category> getCategoryByID(long id) throws ResourceNotFoundException
+//	{
+//		Category category = categoryRepository.findById(id)
+//				.orElseThrow(() -> 
+//				new ResourceNotFoundException
+//				("Category not found for this id : "+id));
+//		return ResponseEntity.ok().body(category);
+//	}
 	
 	
 

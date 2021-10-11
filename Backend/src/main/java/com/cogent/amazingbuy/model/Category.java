@@ -14,32 +14,34 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 @Entity
 @Table(name="category")
 public class Category {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="categoryId")
-	private long categoryId;
+	private long id;
 	
 	@Column(name="category_name")
 	private String name;
-	
-	@OneToMany(cascade = CascadeType.ALL, mappedBy = "category")
-	private Set<Product> products;
+	@JsonBackReference
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "category",orphanRemoval = true)
+	private List<Product> products;
 	
 	public Category() {}
 	
 	public Category(long id, String name) {
 		super();
-		this.categoryId = id;
+		this.id = id;
 		this.name = name;
 	}
-	public long getCategoryId() {
-		return categoryId;
+	public long getId() {
+		return id;
 	}
-	public void setCategoryId(long id) {
-		this.categoryId = id;
+	public void setId(long id) {
+		this.id = id;
 	}
 	public String getName() {
 		return name;
@@ -47,16 +49,16 @@ public class Category {
 	public void setName(String name) {
 		this.name = name;
 	}
-	public Set<Product> getProducts() {
+	public List<Product> getProducts() {
 		return products;
 	}
-	public void setProducts(Set<Product> products) {
+	public void setProducts(List<Product> products) {
 		this.products = products;
 	}
 
 	@Override
 	public String toString() {
-		return "Category [id=" + categoryId + ", name=" + name + ", products=" + products + "]";
+		return "Category [id=" + id + ", name=" + name + ", products=" + products + "]";
 	}
 	
 	
