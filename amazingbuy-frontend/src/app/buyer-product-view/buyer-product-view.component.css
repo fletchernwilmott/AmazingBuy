@@ -1,0 +1,13 @@
+.product-view {
+  width: 60em;
+}
+
+#product-image {
+  width: 100%;
+  height: 80%;
+}
+
+.example-card {
+  max-width: 100%;
+  height: 80%;
+}
