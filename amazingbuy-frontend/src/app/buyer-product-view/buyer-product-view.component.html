@@ -1,0 +1,26 @@
+<p>buyer-product-view works!</p>
+<mat-grid-list cols="12" rowHeight="120px" class="product-view">
+    <mat-grid-tile [colspan]="tiles[0].cols" [rowspan]="tiles[0].rows" [style.background]="tiles[0].color">
+        <img id="product-image" mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg"
+            alt="Photo of a Shiba Inu">
+    </mat-grid-tile>
+    <mat-grid-tile [colspan]="tiles[1].cols" [rowspan]="tiles[1].rows" [style.background]="tiles[1].color">
+        <mat-card class="example-card">
+            <mat-card-title>Product Name</mat-card-title>
+            <mat-card-subtitle>Category</mat-card-subtitle>
+            <mat-card-subtitle>Quantity</mat-card-subtitle>
+            <mat-card-content>
+                <p>Description</p>
+                <p>{{longText}}</p>
+            </mat-card-content>
+            <mat-card-actions>
+                <label>Rating</label><br>
+                <label>Price</label>
+            </mat-card-actions>
+        </mat-card>
+    </mat-grid-tile>
+    <mat-grid-tile [colspan]="tiles[2].cols" [rowspan]="tiles[2].rows" [style.background]="tiles[2].color">
+        <button>Add to cart</button>
+        {{tiles[2].text}}
+    </mat-grid-tile>
+</mat-grid-list>
