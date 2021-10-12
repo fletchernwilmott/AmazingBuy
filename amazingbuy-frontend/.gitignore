@@ -33,3 +33,4 @@ build/
 .vscode/
 
 ###Properties Files###
+/node_modules
