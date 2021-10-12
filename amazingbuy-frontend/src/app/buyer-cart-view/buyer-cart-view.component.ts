@@ -1,12 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 
-export interface PeriodicElement {
-  name: string;
-  position: number;
-  weight: number;
-  symbol: string;
+export interface ProductElements {
+  productId: number;
+  productName: string;
+  productPrice: number;
 }
-
 
 @Component({
   selector: 'app-buyer-cart-view',
@@ -15,20 +13,19 @@ export interface PeriodicElement {
 })
 export class BuyerCartViewComponent implements OnInit {
 
-  displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];
+  displayedColumns: string[] = ['productId', 'productName', 'productPrice', 'remove'];
 
-
-  ELEMENT_DATA: PeriodicElement[] = [
-    {position: 1, name: 'Hydrogen', weight: 1.0079, symbol: 'H'},
-    {position: 2, name: 'Helium', weight: 4.0026, symbol: 'He'},
-    {position: 3, name: 'Lithium', weight: 6.941, symbol: 'Li'},
-    {position: 4, name: 'Beryllium', weight: 9.0122, symbol: 'Be'},
-    {position: 5, name: 'Boron', weight: 10.811, symbol: 'B'},
-    {position: 6, name: 'Carbon', weight: 12.0107, symbol: 'C'},
-    {position: 7, name: 'Nitrogen', weight: 14.0067, symbol: 'N'},
-    {position: 8, name: 'Oxygen', weight: 15.9994, symbol: 'O'},
-    {position: 9, name: 'Fluorine', weight: 18.9984, symbol: 'F'},
-    {position: 10, name: 'Neon', weight: 20.1797, symbol: 'Ne'},
+  ELEMENT_DATA: ProductElements[] = [
+    {productId: 1, productName: 'Laptop', productPrice: 1.00},
+    {productId: 2, productName: 'Mouse', productPrice: 4.00},
+    {productId: 3, productName: 'Potato', productPrice: 6.99},
+    {productId: 4, productName: 'Carrot', productPrice: 9.01},
+    {productId: 5, productName: 'Jeans', productPrice: 10.81},
+    {productId: 6, productName: 'Shampoo', productPrice: 12.01},
+    {productId: 7, productName: 'Headphones', productPrice: 14.00},
+    {productId: 8, productName: 'Videogame', productPrice: 15.99},
+    {productId: 9, productName: 'Game Tickets', productPrice: 18.94},
+    {productId: 10, productName: 'Socks', productPrice: 20.17},
   ];
   
   dataSource = this.ELEMENT_DATA;

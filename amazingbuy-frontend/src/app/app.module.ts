@@ -27,6 +27,8 @@ import { TestOmponentComponent } from './test-omponent/test-omponent.component';
 import {MatTableModule} from '@angular/material/table';
 import { BuyerOrderViewComponent } from './buyer-order-view/buyer-order-view.component';
 import { BuyerProductViewComponent } from './buyer-product-view/buyer-product-view.component';
+import { SellerOrderViewComponent } from './seller-order-view/seller-order-view.component';
+import { SellerStockViewComponent } from './seller-stock-view/seller-stock-view.component';
 
 @NgModule({
   declarations: [
@@ -42,6 +44,8 @@ import { BuyerProductViewComponent } from './buyer-product-view/buyer-product-vi
     TestOmponentComponent,
     BuyerOrderViewComponent,
     BuyerProductViewComponent,
+    SellerOrderViewComponent,
+    SellerStockViewComponent,
   ],
   imports: [
     BrowserModule,
