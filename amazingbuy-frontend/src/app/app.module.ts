@@ -22,6 +22,9 @@ import { ProductComponent } from './product/product.component';
 import { ProductListComponent } from './product-list/product-list.component';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatListModule } from '@angular/material/list';
+import { BuyerCartViewComponent } from './buyer-cart-view/buyer-cart-view.component';
+import { TestOmponentComponent } from './test-omponent/test-omponent.component';
+import {MatTableModule} from '@angular/material/table';
 
 @NgModule({
   declarations: [
@@ -33,6 +36,8 @@ import { MatListModule } from '@angular/material/list';
     ContainerComponent,
     ProductComponent,
     ProductListComponent,
+    BuyerCartViewComponent,
+    TestOmponentComponent,
   ],
   imports: [
     BrowserModule,
@@ -51,6 +56,7 @@ import { MatListModule } from '@angular/material/list';
     FlexLayoutModule,
     MatDividerModule,
     MatListModule,
+    MatTableModule
   ],
   providers: [],
   bootstrap: [AppComponent],
