@@ -25,6 +25,15 @@ import { MatListModule } from '@angular/material/list';
 import { BuyerOrderViewComponent } from './buyer-order-view/buyer-order-view.component';
 import { MatTableModule } from '@angular/material/table';
 import { BuyerProductViewComponent } from './buyer-product-view/buyer-product-view.component';
+import { SellerAddProductComponent } from './seller-add-product/seller-add-product.component';
+import { SellerEditProductComponent } from './seller-edit-product/seller-edit-product.component';
+import { AccountViewComponent } from './account-view/account-view.component';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatRadioModule } from '@angular/material/radio';
+import { ReactiveFormsModule } from '@angular/forms';
+import { SignUpComponent } from './sign-up/sign-up.component';
+import { MatSelectModule } from '@angular/material/select';
 @NgModule({
   declarations: [
     AppComponent,
@@ -37,6 +46,10 @@ import { BuyerProductViewComponent } from './buyer-product-view/buyer-product-vi
     ProductListComponent,
     BuyerOrderViewComponent,
     BuyerProductViewComponent,
+    SellerAddProductComponent,
+    SellerEditProductComponent,
+    AccountViewComponent,
+    SignUpComponent,
   ],
   imports: [
     BrowserModule,
@@ -56,6 +69,11 @@ import { BuyerProductViewComponent } from './buyer-product-view/buyer-product-vi
     MatDividerModule,
     MatListModule,
     MatTableModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatRadioModule,
+    ReactiveFormsModule,
+    MatSelectModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

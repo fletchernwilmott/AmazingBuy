@@ -40,7 +40,12 @@ export class StripeComponent implements OnInit {
   chargeCard(token: any) {
     const headers = new HttpHeaders({ token: token, amount: '0.5' });
     this.http
-      .post('http://localhost:8080/payment/charge', {}, { headers: headers })
+      .post(
+        'http://localhost:8080/payment/charge',
+        { observe: 'response' },
+        { headers: headers }
+      )
+
       .subscribe((res) => console.log(res));
   }
 }
