@@ -19,7 +19,7 @@
     <!-- Weight Column -->
     <ng-container matColumnDef="productPrice">
       <th mat-header-cell *matHeaderCellDef> Price </th>
-      <td mat-cell *matCellDef="let element"> {{element.productPrice}} </td>
+      <td mat-cell *matCellDef="let element"><input type="number" min=0.01 step=0.01 value="{{element.productPrice}}"> </td>
     </ng-container>
   
     <ng-container matColumnDef="productQuantity">
@@ -27,10 +27,10 @@
         <td mat-cell *matCellDef="let element"> {{element.productQuantity}} </td>
     </ng-container>
 
-    <ng-container matColumnDef="add-stock">
-        <th mat-header-cell *matHeaderCellDef> Add Stock </th>
+    <ng-container matColumnDef="edit">
+        <th mat-header-cell *matHeaderCellDef> Edit </th>
         <td mat-cell *matCellDef="let element">
-            <button>Add Stock</button>
+            <button>Edit</button>
         </td>
     </ng-container>
   

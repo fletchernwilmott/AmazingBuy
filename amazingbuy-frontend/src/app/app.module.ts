@@ -23,7 +23,6 @@ import { ProductListComponent } from './product-list/product-list.component';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatListModule } from '@angular/material/list';
 import { BuyerCartViewComponent } from './buyer-cart-view/buyer-cart-view.component';
-import { TestOmponentComponent } from './test-omponent/test-omponent.component';
 import {MatTableModule} from '@angular/material/table';
 import { BuyerOrderViewComponent } from './buyer-order-view/buyer-order-view.component';
 import { BuyerProductViewComponent } from './buyer-product-view/buyer-product-view.component';
@@ -41,7 +40,6 @@ import { SellerStockViewComponent } from './seller-stock-view/seller-stock-view.
     ProductComponent,
     ProductListComponent,
     BuyerCartViewComponent,
-    TestOmponentComponent,
     BuyerOrderViewComponent,
     BuyerProductViewComponent,
     SellerOrderViewComponent,

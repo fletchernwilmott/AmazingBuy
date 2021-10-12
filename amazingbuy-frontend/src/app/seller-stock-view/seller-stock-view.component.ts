@@ -14,7 +14,7 @@ export interface ProductElements {
 })
 export class SellerStockViewComponent implements OnInit {
 
-  displayedColumns: string[] = ['productId', 'productName', 'productPrice', 'productQuantity', 'add-stock'];
+  displayedColumns: string[] = ['productId', 'productName', 'productPrice', 'productQuantity', 'edit'];
 
   ELEMENT_DATA: ProductElements[] = [
     {productId: 1, productName: 'Hydrogen', productPrice: 1.00, productQuantity: 10},
