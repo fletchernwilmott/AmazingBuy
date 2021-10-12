@@ -1,0 +1,46 @@
+<p>sign-up works!</p>
+<div class="example-container">
+    <form>
+        <p>
+            <mat-form-field appearance="outline">
+                <mat-label>Full name</mat-label>
+                <input matInput placeholder="Placeholder">
+            </mat-form-field>
+        </p>
+        <p>
+            <mat-form-field appearance="outline">
+                <mat-label>Email</mat-label>
+                <input matInput placeholder="pat@example.com" [formControl]="email" required>
+                <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
+            </mat-form-field>
+        </p>
+        <p>
+            <mat-form-field appearance="outline">
+                <mat-label>Password</mat-label>
+                <input matInput [type]="hide ? 'password' : 'text'">
+                <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+                    [attr.aria-pressed]="hide">
+                    <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                </button>
+            </mat-form-field>
+        </p>
+        <p>
+            <mat-form-field appearance="outline">
+                <mat-label>Date of Birth</mat-label>
+                <input matInput placeholder="Placeholder">
+            </mat-form-field>
+        </p>
+        <div>
+            <label>Account Type: </label>
+            <mat-radio-group>
+                <mat-radio-button value="seller">Seller</mat-radio-button>
+                <mat-radio-button value="buyer">Buyer</mat-radio-button>
+            </mat-radio-group>
+        </div>
+        <button mat-raised-button color="primary">Primary</button>
+
+
+
+
+    </form>
+</div>

@@ -8,8 +8,19 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
 @Configuration
 public class MVCProperties extends WebMvcConfigurerAdapter {
 
-    @Override
-    public void addCorsMappings(CorsRegistry registry) {
-        registry.addMapping("/**").allowedMethods("GET", "POST", "PUT", "DELETE", "HEAD", "OPTIONS");
+//    @Override
+//    public void addCorsMappings(CorsRegistry registry) {
+//        registry.addMapping("/**").allowedMethods("GET", "POST", "PUT", "DELETE", "HEAD", "OPTIONS");
+//    }
+	
+	@Override
+    public void addCorsMappings(CorsRegistry corsRegistry) {
+        corsRegistry.addMapping("/**")
+                .allowedOrigins("http://localhost:4200")
+                .allowedMethods("*")
+                .maxAge(3600L)
+                .allowedHeaders("*")
+                .exposedHeaders("Authorization")
+                .allowCredentials(true);
     }
 }
