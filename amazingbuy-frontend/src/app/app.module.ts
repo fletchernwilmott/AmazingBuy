@@ -28,7 +28,15 @@ import { BuyerOrderViewComponent } from './buyer-order-view/buyer-order-view.com
 import { BuyerProductViewComponent } from './buyer-product-view/buyer-product-view.component';
 import { SellerOrderViewComponent } from './seller-order-view/seller-order-view.component';
 import { SellerStockViewComponent } from './seller-stock-view/seller-stock-view.component';
-
+import { SellerAddProductComponent } from './seller-add-product/seller-add-product.component';
+import { SellerEditProductComponent } from './seller-edit-product/seller-edit-product.component';
+import { AccountViewComponent } from './account-view/account-view.component';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatRadioModule } from '@angular/material/radio';
+import { ReactiveFormsModule } from '@angular/forms';
+import { SignUpComponent } from './sign-up/sign-up.component';
+import { MatSelectModule } from '@angular/material/select';
 @NgModule({
   declarations: [
     AppComponent,
@@ -44,6 +52,10 @@ import { SellerStockViewComponent } from './seller-stock-view/seller-stock-view.
     BuyerProductViewComponent,
     SellerOrderViewComponent,
     SellerStockViewComponent,
+    SellerAddProductComponent,
+    SellerEditProductComponent,
+    AccountViewComponent,
+    SignUpComponent,
   ],
   imports: [
     BrowserModule,
@@ -63,6 +75,11 @@ import { SellerStockViewComponent } from './seller-stock-view/seller-stock-view.
     MatDividerModule,
     MatListModule,
     MatTableModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatRadioModule,
+    ReactiveFormsModule,
+    MatSelectModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
