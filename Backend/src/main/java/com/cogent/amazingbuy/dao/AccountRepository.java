@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import com.cogent.amazingbuy.model.Account;
 
 @CrossOrigin()
-@RepositoryRestResource(collectionResourceRel = "account-details", path = "account")
+@RepositoryRestResource(collectionResourceRel = "accounts", path = "account")
 public interface AccountRepository extends JpaRepository<Account,Long>{
 	@Query
 	(value="FROM Account a WHERE a.email= :email and a.password = :password")
