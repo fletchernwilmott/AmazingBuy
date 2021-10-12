@@ -9,12 +9,14 @@ import { AccountService } from '../account-service';
 })
 export class AccountViewComponent implements OnInit {
 
+  accounts!: Account[];
+
   constructor( private as: AccountService) {
 
   }
 
   ngOnInit(): void {
-    this.as.getAllAccounts().subscribe(res=>console.log(res))
+    this.as.getAllAccounts().subscribe(res => (this.accounts=res));
   }
 
 }
