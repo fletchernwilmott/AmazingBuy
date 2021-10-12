@@ -22,9 +22,12 @@ import { ProductComponent } from './product/product.component';
 import { ProductListComponent } from './product-list/product-list.component';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatListModule } from '@angular/material/list';
+import { BuyerCartViewComponent } from './buyer-cart-view/buyer-cart-view.component';
+import {MatTableModule} from '@angular/material/table';
 import { BuyerOrderViewComponent } from './buyer-order-view/buyer-order-view.component';
-import { MatTableModule } from '@angular/material/table';
 import { BuyerProductViewComponent } from './buyer-product-view/buyer-product-view.component';
+import { SellerOrderViewComponent } from './seller-order-view/seller-order-view.component';
+import { SellerStockViewComponent } from './seller-stock-view/seller-stock-view.component';
 import { SellerAddProductComponent } from './seller-add-product/seller-add-product.component';
 import { SellerEditProductComponent } from './seller-edit-product/seller-edit-product.component';
 import { AccountViewComponent } from './account-view/account-view.component';
@@ -44,8 +47,11 @@ import { MatSelectModule } from '@angular/material/select';
     ContainerComponent,
     ProductComponent,
     ProductListComponent,
+    BuyerCartViewComponent,
     BuyerOrderViewComponent,
     BuyerProductViewComponent,
+    SellerOrderViewComponent,
+    SellerStockViewComponent,
     SellerAddProductComponent,
     SellerEditProductComponent,
     AccountViewComponent,

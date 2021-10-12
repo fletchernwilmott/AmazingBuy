@@ -61,7 +61,7 @@ public class ProductController {
 	// this was previously mapped to @GetMapping("/products/{name}")
 	// this was causing an error with the already mapped @GetMapping("/products/{id}")
 	// so we had to re-map this @GetMapping("/productname/{name}")
-	@GetMapping("/productname/{name}")
+	@GetMapping("/productName/{name}")
 	public List<Product> getProductsByName(@PathVariable("name") String name) {
 		return productRepository.findProductByName(name);
 	}
