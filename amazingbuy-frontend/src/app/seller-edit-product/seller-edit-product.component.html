@@ -1,0 +1,37 @@
+<p>seller-edit-product works!</p>
+<div class="example-container">
+    <form style="background-color: #F9F3E6; width: 600px;">
+        <mat-form-field appearance="outline">
+            <mat-label>Product Name</mat-label>
+            <input readonly matInput value="Earbuds">
+        </mat-form-field><br>
+        <mat-form-field appearance="outline">
+            <mat-label>Category</mat-label>
+            <input readonly matInput value="Electronics">
+        </mat-form-field><br>
+        <mat-form-field appearance="outline">
+            <mat-label>Image URL</mat-label>
+            <input matInput value="http://image.png">
+        </mat-form-field><br>
+        <mat-form-field appearance="outline">
+            <mat-label>Price</mat-label>
+            <input matInput type="number" class="example-right-align" value="13.99">
+            <!-- <span matPrefix>$&nbsp;</span> -->
+            <span matSuffix>$</span>
+        </mat-form-field><br>
+        <mat-form-field appearance="outline">
+            <mat-label>Quantity</mat-label>
+            <input type="number" matInput value="37">
+            <span matSuffix>Unit</span>
+        </mat-form-field><br>
+        <mat-form-field appearance="outline">
+            <mat-label>Short Description</mat-label>
+            <textarea matInput readonly value="Short Description"></textarea>
+        </mat-form-field><br>
+        <mat-form-field appearance="outline">
+            <mat-label>Long Description</mat-label>
+            <textarea matInput readonly value="Long Description"></textarea>
+        </mat-form-field>
+        <button mat-raised-button color="primary">Edit</button>
+    </form>
+</div>

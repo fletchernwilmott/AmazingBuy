@@ -2,6 +2,9 @@ package com.cogent.amazingbuy.model;
 
 import java.util.List;
 
+import java.util.Set;
+
+
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -11,57 +14,53 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 @Entity
-@Table(name="product_category")
-
+@Table(name="category")
 public class Category {
-
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name="category_id")
-	private long category_id;
+	@Column(name="categoryId")
+	private long id;
 	
 	@Column(name="category_name")
-	private String category_name;
+	private String name;
+	@JsonBackReference
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "category",orphanRemoval = true)
+	private List<Product> products;
 	
-	@OneToMany(cascade = CascadeType.ALL, mappedBy = "category")
-	private List<Product> category_products;
-
-	public Category() {
-		
-	}
+	public Category() {}
 	
-	public Category(long category_id, String category_name, List<Product> category_products) {
+	public Category(long id, String name) {
 		super();
-		this.category_id = category_id;
-		this.category_name = category_name;
-		this.category_products = category_products;
+		this.id = id;
+		this.name = name;
+	}
+	public long getId() {
+		return id;
+	}
+	public void setId(long id) {
+		this.id = id;
+	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	public List<Product> getProducts() {
+		return products;
+	}
+	public void setProducts(List<Product> products) {
+		this.products = products;
 	}
 
-	public long getCategory_id() {
-		return category_id;
+	@Override
+	public String toString() {
+		return "Category [id=" + id + ", name=" + name + ", products=" + products + "]";
 	}
-
-	public void setCategory_id(long category_id) {
-		this.category_id = category_id;
-	}
-
-	public String getCategory_name() {
-		return category_name;
-	}
-
-	public void setCategory_name(String category_name) {
-		this.category_name = category_name;
-	}
-
-	public List<Product> getCategory_products() {
-		return category_products;
-	}
-
-	public void setCategory_products(List<Product> category_products) {
-		this.category_products = category_products;
-	}
-
 	
 	
 }
+

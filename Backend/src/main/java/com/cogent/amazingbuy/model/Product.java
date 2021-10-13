@@ -1,13 +1,20 @@
 package com.cogent.amazingbuy.model;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @Entity
 @Table(name = "product")
@@ -19,7 +26,7 @@ public class Product {
 	private Long productId;
 	
 	@Column(name = "product_name")
-	private String productName;
+	private String name;
 	
 	@Column(name = "product_image_url")
 	private String productImageURL;
@@ -41,32 +48,29 @@ public class Product {
 
 	// this is the foreign key
 	@ManyToOne
-	@JoinColumn(name = "category_id", nullable = false)
+	@JsonManagedReference
+	@JoinColumn(name = "categoryId")
 	private Category category;
 	
-	// order_id is the foreign key 
-	@ManyToOne
-	@JoinColumn(name = "order_id")
-	private Order order;
+//	// order_id is the foreign key 
+	@JsonIgnore
+	@ManyToMany(mappedBy ="products")
+	private List<Order> orders;
 
-	public Product() {
-		super();
-	}
+	public Product() {}
 
-	public Product(Long productId, String productName, String productImageURL, double productPrice, int productQuantity,
-			String productLongDescription, String productShortDescription, double productRating, Category category,
-			Order order) {
+	public Product(String name, String productImageURL, double productPrice, int productQuantity,
+			String productLongDescription, String productShortDescription, double productRating) {
 		super();
-		this.productId = productId;
-		this.productName = productName;
+		this.name = name;
 		this.productImageURL = productImageURL;
 		this.productPrice = productPrice;
 		this.productQuantity = productQuantity;
 		this.productLongDescription = productLongDescription;
 		this.productShortDescription = productShortDescription;
 		this.productRating = productRating;
-		this.category = category;
-		this.order = order;
+//		this.category = category;
+//		this.order = order;
 	}
 
 	public Long getProductId() {
@@ -77,12 +81,12 @@ public class Product {
 		this.productId = productId;
 	}
 
-	public String getProductName() {
-		return productName;
+	public String getName() {
+		return name;
 	}
 
-	public void setProductName(String productName) {
-		this.productName = productName;
+	public void setName(String name) {
+		this.name = name;
 	}
 
 	public String getProductImageURL() {
@@ -141,17 +145,17 @@ public class Product {
 		this.category = category;
 	}
 
-	public Order getOrder() {
-		return order;
+	public List<Order> getOrders() {
+		return orders;
 	}
 
-	public void setOrder(Order order) {
-		this.order = order;
+	public void setOrders(List<Order> order) {
+		this.orders = order;
 	}
 
 	@Override
 	public String toString() {
-		return "Product [productId=" + productId + ", productName=" + productName + ", productImageURL="
+		return "Product [productId=" + productId + ", name=" + name + ", productImageURL="
 				+ productImageURL + ", productPrice=" + productPrice + ", productQuantity=" + productQuantity
 				+ ", productLongDescription=" + productLongDescription + ", productShortDescription="
 				+ productShortDescription + ", productRating=" + productRating + "]";

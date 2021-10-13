@@ -1,0 +1,6 @@
+<p>product-list works!</p>
+<div fxLayout="row wrap">
+    <div fxFlex="50%" *ngFor="let p of products">
+        <app-product [product]=p></app-product>
+    </div>
+</div>
