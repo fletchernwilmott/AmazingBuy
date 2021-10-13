@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Order } from '../service/order';
+import { OrderService } from '../service/order.service';
 export interface PeriodicElement {
   name: string;
   position: number;
@@ -26,7 +28,22 @@ export class BuyerOrderViewComponent implements OnInit {
   ];
   displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];
   dataSource = this.ELEMENT_DATA;
-  constructor() {}
+  constructor(private os: OrderService) {}
+  orders!: Order[];
+  filteredOrders!: Order[];
 
+  filterPaidOrders() {}
+
+  sumOrdersPrice() {}
+
+  onCancel() {}
+
+  getOrdersByAccountId(id: number) {
+    this.os
+      .findByAccountId(id)
+      .subscribe((res) =>
+        console.log(`Account 1 orders: ${JSON.stringify(res)}`)
+      );
+  }
   ngOnInit(): void {}
 }
