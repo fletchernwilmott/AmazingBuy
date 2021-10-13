@@ -11,7 +11,7 @@ import com.cogent.amazingbuy.model.Order;
 import com.cogent.amazingbuy.model.Product;
 
 @CrossOrigin
-@RepositoryRestResource(collectionResourceRel = "orders-details", path = "order")
+@RepositoryRestResource(collectionResourceRel = "orders", path = "order")
 public interface OrderRepository extends JpaRepository<Order, Long> {
 	Page<Order> findByAccountId(@RequestParam("id") Long id, Pageable pageable);
 	
