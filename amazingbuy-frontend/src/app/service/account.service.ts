@@ -1,8 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
 import { Account } from './account';
+import { map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root',
@@ -30,6 +30,14 @@ export class AccountService {
     return this.http
       .get<GetResponse>(this.baseUrl)
       .pipe(map((res) => res._embedded.accounts));
+  }
+
+  getAccountByEmailNPassword(
+    email: string,
+    password: string
+  ): Observable<Object> {
+    const uri = `${this.baseUrl}/search/getOne?email=${email}&password=${password}`;
+    return this.http.get(uri);
   }
 }
 interface GetResponse {
