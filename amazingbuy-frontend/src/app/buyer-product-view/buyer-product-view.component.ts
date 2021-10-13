@@ -1,3 +1,4 @@
+import { createR3ProviderExpression } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
 export interface Tile {
   color: string;
@@ -22,4 +23,10 @@ export class BuyerProductViewComponent implements OnInit {
   constructor() {}
 
   ngOnInit(): void {}
+
+  getProductById() {}
+
+  onAddToCart() {}
+
+  createOrder() {}
 }

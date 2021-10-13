@@ -35,16 +35,16 @@ public class AccountController {
 //	          return account;
 //	}
 //	
-//	@GetMapping("accounts/{email}/{password}")
-//		public Optional<Account> getAccountByNameAndEmail(
-//				@PathVariable String email,@PathVariable String password
-//				) throws ResourceNotFoundException {
-//		Optional<Account> account= Optional.ofNullable(accountRepository.getOne(email,password).orElseThrow(() ->
-//		new ResourceNotFoundException
-//		("No account found under this name: "+email)));
-//          return account;	
-//	}
-//	
+	@GetMapping("accounts/{email}/{password}")
+		public Optional<Account> getAccountByNameAndEmail(
+				@PathVariable String email,@PathVariable String password
+				) throws ResourceNotFoundException {
+		Optional<Account> account= Optional.ofNullable(accountRepository.getOne(email,password).orElseThrow(() ->
+		new ResourceNotFoundException
+		("No account found under this name: "+email)));
+          return account;	
+	}
+	
 	@PostMapping("/accounts")
 	public String createStudent(@RequestBody Account account) {
 		accountRepository.save(account);

@@ -10,12 +10,13 @@ import { OrderService } from '../service/order.service';
 })
 export class AccountViewComponent implements OnInit {
   accounts!: Account[];
+  signedAccount!: Account;
 
   constructor(private as: AccountService, private os: OrderService) {}
 
   ngOnInit(): void {
     this.signIn();
-    this.getOrdersByAccountId(1);
+    // this.getOrdersByAccountId(this.signedAccount.id);
   }
   getAllAccounts() {
     this.as.getAllAccounts().subscribe((res) => (this.accounts = res));
@@ -24,8 +25,13 @@ export class AccountViewComponent implements OnInit {
   signIn() {
     this.as
       .getAccountByEmailNPassword('rob@gmail.com', 'rob')
-      .subscribe((res) => console.log(res));
+      .subscribe((res) => {
+        this.signedAccount = res;
+        // console.log(this.signedAccount.);
+        this.getOrdersByAccountId(this.signedAccount.id);
+      });
   }
+  getAccountById() {}
   getOrdersByAccountId(id: number) {
     this.os
       .findByAccountId(id)

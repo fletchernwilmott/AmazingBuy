@@ -19,6 +19,21 @@ export class OrderService {
       .get<GetOrders>(uri)
       .pipe(map((res) => res._embedded.orders));
   }
+  createOrder(order: Object): Observable<Object> {
+    return this.http.post(`${this.baseUrl2}`, order);
+  }
+  updateOrder(id: number, value: any): Observable<Object> {
+    return this.http.put(`${this.baseUrl2}/${id}`, value);
+  }
+  cancelOrder(id: number) {
+    return this.http.delete(`${this.baseUrl2}/${id}`);
+  }
+  getAllOrders(): Observable<any> {
+    return this.http.get(this.baseUrl2);
+  }
+  getOrderById(id: number): Observable<any> {
+    return this.http.get(`${this.baseUrl}/${id}`);
+  }
 }
 interface GetOrders {
   _embedded: {
