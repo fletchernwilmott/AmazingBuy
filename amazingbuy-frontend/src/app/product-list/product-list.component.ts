@@ -21,4 +21,11 @@ export class ProductListComponent implements OnInit {
       .findByNameContaining(name)
       .subscribe((res) => (this.products = res));
   }
+
+  getAllProducts(){
+    this.ps.getAllProducts()
+    //subscribe((res) => (this.products = res));
+  }
+
+
 }

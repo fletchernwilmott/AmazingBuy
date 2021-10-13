@@ -19,7 +19,29 @@ export class OrderService {
       .get<GetOrders>(uri)
       .pipe(map((res) => res._embedded.orders));
   }
+
+  createOrder(){
+
+  }
+
+  updateOrder(){
+
+  }
+
+  cancelOrder(){
+
+  }
+
+  getAllOrders(){
+
+  }
+
+  getOrderById(){
+    
+  }
+
 }
+
 interface GetOrders {
   _embedded: {
     orders: Order[];

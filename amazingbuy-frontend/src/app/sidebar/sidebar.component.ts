@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Category } from '../service/category';
+import { CategoryService } from '../service/category.service';
 
 @Component({
   selector: 'app-sidebar',
@@ -7,9 +9,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SidebarComponent implements OnInit {
 
-  constructor() { }
+  categories!: Category[];
+
+  constructor(private cs: CategoryService) { }
 
   ngOnInit(): void {
+    this.getAllCategories();
   }
+
+  getAllCategories(){
+    this.cs.getAllCategories().subscribe((res) => (this.categories = res));
+  }
+
+  //filter items by category
+  onClick(){}
+
 
 }

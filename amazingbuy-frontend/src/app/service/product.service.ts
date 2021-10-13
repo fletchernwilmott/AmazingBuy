@@ -31,7 +31,26 @@ export class ProductService {
       .get<GetProducts>(uri)
       .pipe(map((res) => res._embedded.products));
   }
+
+  getAllProducts(): Observable<Product[]>{
+    return this.http
+      .get<GetProducts>(this.baseUrl)
+      .pipe(map((res) => res._embedded.products));
+  }
+
+  getProductById(id: number): Observable<Product>{
+    return this.http.get<Product>(`${this.baseUrl2}/${id}`).pipe(map(res => res));
+  }
+
+  updateProduct(id: number, value: any): Observable<Object>{
+    return this.http.put(`${this.baseUrl2}/${id}`, value);
+  }
+
+  // createAcccount(account: Object): Observable<Object> {
+  //   return this.http.post(`${this.baseUrl2}`, account);
+  // }
 }
+
 interface GetProducts {
   _embedded: {
     products: Product[];
