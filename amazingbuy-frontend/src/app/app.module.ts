@@ -37,6 +37,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { ReactiveFormsModule } from '@angular/forms';
 import { SignUpComponent } from './sign-up/sign-up.component';
 import { MatSelectModule } from '@angular/material/select';
+import { LoginComponent } from './login/login.component';
 
 @NgModule({
   declarations: [
@@ -57,6 +58,7 @@ import { MatSelectModule } from '@angular/material/select';
     SellerEditProductComponent,
     AccountViewComponent,
     SignUpComponent,
+    LoginComponent,
   ],
   imports: [
     BrowserModule,
