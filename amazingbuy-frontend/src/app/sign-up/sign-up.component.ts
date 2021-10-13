@@ -20,4 +20,8 @@ export class SignUpComponent implements OnInit {
   constructor() {}
 
   ngOnInit(): void {}
+
+  onAddAccount() {}
+
+  createAccount() {}
 }
