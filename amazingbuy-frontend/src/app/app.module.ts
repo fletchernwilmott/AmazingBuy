@@ -38,6 +38,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { SignUpComponent } from './sign-up/sign-up.component';
 import { MatSelectModule } from '@angular/material/select';
 import { LoginComponent } from './login/login.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -83,6 +84,7 @@ import { LoginComponent } from './login/login.component';
     //MatRadioModule,
     ReactiveFormsModule,
     MatSelectModule,
+    NgbModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
