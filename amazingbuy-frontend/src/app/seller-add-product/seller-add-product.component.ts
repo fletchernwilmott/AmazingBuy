@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
+import { Product } from '../service/product';
 
 @Component({
   selector: 'app-seller-add-product',
@@ -20,4 +21,9 @@ export class SellerAddProductComponent implements OnInit {
   constructor() {}
 
   ngOnInit(): void {}
+
+  createProduct(product: Product) {}
+  onAdd() {
+    this.createProduct;
+  }
 }
