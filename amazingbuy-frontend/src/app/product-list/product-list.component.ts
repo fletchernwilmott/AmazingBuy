@@ -14,8 +14,13 @@ export class ProductListComponent implements OnInit {
   constructor(private ps: ProductService) {}
 
   ngOnInit(): void {
-    this.searchByNameContaining('ot');
+    this.getAllProducts();
   }
+
+  getAllProducts() {
+    this.ps.getAllProducts().subscribe((res) => (this.products = res));
+  }
+
   searchByNameContaining(name: string) {
     this.ps
       .findByNameContaining(name)

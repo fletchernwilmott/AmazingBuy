@@ -1,5 +1,9 @@
 .content {
   padding: 5px;
+  cursor: pointer;
+  /* &:hover {
+    @include mat-elevation(8);
+  } */
 }
 
 .content > mat-card {
