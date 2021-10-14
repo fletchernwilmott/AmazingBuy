@@ -38,7 +38,6 @@ export class LoginComponent implements OnInit {
       .getAccountByEmailAndPassword(email, password)
       .subscribe((res) => {
         this.onSuccessSigning(res);
-        //console.log("Signed Account is now: " + this.as.getSignedAccount());
       });
   }
 
