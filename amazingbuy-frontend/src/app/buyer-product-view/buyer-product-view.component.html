@@ -11,7 +11,7 @@
     <mat-grid-tile [colspan]="tiles[1].cols" [rowspan]="tiles[1].rows" [style.background]="tiles[1].color">
         <mat-card class="example-card">
             <mat-card-title>{{product?product.name:null}}</mat-card-title>
-            <mat-card-subtitle>{{product?product.category.name:null}}</mat-card-subtitle>
+            <!-- <mat-card-subtitle>{{product?product.category.name:null}}</mat-card-subtitle> -->
             <mat-card-subtitle>Quantity: {{product?product.productQuantity:null}}</mat-card-subtitle>
             <mat-card-content>
                 <p>Description</p>

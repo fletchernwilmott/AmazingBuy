@@ -38,6 +38,8 @@ import { SignUpComponent } from './sign-up/sign-up.component';
 import { MatSelectModule } from '@angular/material/select';
 import { LoginComponent } from './login/login.component';
 import { MatMenuModule } from '@angular/material/menu';
+// MDB Angular Free
+import { MdbFormsModule } from 'mdb-angular-ui-kit/forms';
 
 @NgModule({
   declarations: [
@@ -84,6 +86,7 @@ import { MatMenuModule } from '@angular/material/menu';
     ReactiveFormsModule,
     MatSelectModule,
     MatMenuModule,
+    MdbFormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
