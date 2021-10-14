@@ -2,3 +2,12 @@
   flex: 1 1 auto;
   width: 900px;
 }
+
+.navbar {
+  background-color: blueviolet;
+}
+
+#signin {
+  background-color: chartreuse;
+  color: black;
+}

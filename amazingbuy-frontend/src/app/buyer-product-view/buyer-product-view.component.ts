@@ -31,16 +31,7 @@ export class BuyerProductViewComponent implements OnInit {
   id!: number;
   selectedProduct: Product[] = [];
   signedAccount!: Account;
-  // newOrder: Order = [
-  //   2,
-  //   false,
-  //   false,
-  //   'null',
-  //   new Date(),
-  //   // this.signedAccount,
-  //   1,
-  //   this.selectedProduct,
-  // ];
+  newOrder = new Order();
 
   constructor(
     private route: ActivatedRoute,
@@ -54,6 +45,14 @@ export class BuyerProductViewComponent implements OnInit {
     console.log(this.id);
     this.getProductById(this.id);
   }
+  newOrderDetails() {
+    this.newOrder.paid = false;
+    this.newOrder.shipped = false;
+    this.newOrder.shippingAddress = '';
+    this.newOrder.timestamp = `${new Date()}`;
+    this.newOrder.account = this.signedAccount;
+    this.newOrder.products = this.selectedProduct;
+  }
 
   getProductById(id: number) {
     this.ps.findProductById(id).subscribe((res) => (this.product = res));
@@ -62,9 +61,15 @@ export class BuyerProductViewComponent implements OnInit {
   onAddToCart(product: Product) {
     this.selectedProduct.push(product);
     console.log(this.selectedProduct);
+    this.createOrder(this.newOrder);
   }
 
   createOrder(order: Order) {
-    this.os.createOrder(order);
+    this.newOrderDetails();
+    console.log(JSON.stringify(this.newOrder));
+    this.os.createOrder(order).subscribe(
+      (data) => console.log(data),
+      (e) => console.log(e)
+    );
   }
 }
