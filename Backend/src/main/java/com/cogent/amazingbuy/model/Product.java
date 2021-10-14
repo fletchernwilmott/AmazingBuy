@@ -48,11 +48,11 @@ public class Product {
 
 	// this is the foreign key
 	@ManyToOne
-	@JsonManagedReference
+	@JsonIgnore
 	@JoinColumn(name = "categoryId")
 	private Category category;
 	
-//	// order_id is the foreign key 
+	// order_id is the foreign key 
 	@JsonIgnore
 	@ManyToMany(mappedBy ="products")
 	private List<Order> orders;

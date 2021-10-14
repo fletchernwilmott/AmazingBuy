@@ -40,8 +40,9 @@ public class OrderController {
 	
 	// we need to fix the relationship
 	// create order
-	@PostMapping("/createOrder")
+	@PostMapping("/orders")
 	public String createOrder(@RequestBody Order o) {
+		System.out.println(1);
 		orderRepository.save(o);
 		return "order created";
 	}
