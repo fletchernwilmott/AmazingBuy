@@ -24,7 +24,7 @@ export class AccountViewComponent implements OnInit {
   //this method will be moved to signIn-view
   signIn() {
     this.as
-      .getAccountByEmailNPassword('rob@gmail.com', 'rob')
+      .getAccountByEmailAndPassword('rob@gmail.com', 'rob')
       .subscribe((res) => {
         this.signedAccount = res;
         // console.log(this.signedAccount.);

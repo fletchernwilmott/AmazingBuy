@@ -1,27 +1,22 @@
 <p>login works!</p>
 
+<div class="container">
+<div class="card"></div>
 <div class="card">
 	<h1 class="title">Login</h1>
-	<form>
-		<div class="input-container">
-			<input id="#{label}" type="#{type}" required="required" />
-			<label for="#{label}">Email</label>
-			<div class="bar">
-				::before
-				::after
-			</div>
+		<form (ngSubmit)="onSubmit()" #myform="ngForm">
+		<div class="mb-3">
+			<label class="form-label" for="email">Email</label>
+			<input class="form-control form-control-lg" id="email" type="email" placeholder="Email" required [(ngModel)]="signin.email" name="email">
 		</div>
-		<div class="input-container">
-			<input id="#{label}" type="#{type}" required="required" />
-			<label for="#{label}">Password</label>
-			<div class="bar">
-				::before
-				::after
-			</div>
-			<div class="button-container">
-				::before
-				<span>Log into your Account</span>
-			</div>
+		<div class="mb-3">
+			<label class="form-label" for="password">Password</label>
+			<input class="form-control form-control-lg" id="password" type="password" placeholder="Password" required [(ngModel)]="signin.password" name="password">
 		</div>
-	</form>
+		<button type="submit" class="btn btn-success" [disabled]="!myform.form.valid">Sign in</button>
+		</form>
+	
 </div>
+</div>
+
+

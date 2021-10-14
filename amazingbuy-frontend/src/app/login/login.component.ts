@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AccountService } from '../service/account.service';
+import { Account } from '../service/account';
+
 
 @Component({
   selector: 'app-login',
@@ -9,17 +11,38 @@ import { AccountService } from '../service/account.service';
 export class LoginComponent implements OnInit {
   constructor(private as: AccountService) {}
 
-  ngOnInit(): void {}
 
-  onSuccessSigning() {}
+  signin:any={};
+  myform:any={}
+  submitted=false;
 
-  signIn() {
+  ngOnInit(): void {
+    console.log('hello');
+  }
+  
+  
+  onSubmit() {
+    this.submitted = true;
+    console.log('Email: ' + this.signin.email);
+    console.log('Password: ' + this.signin.password);
+    this.signIn(this.signin.email, this.signin.password);
+  }
+
+  onSuccessSigning(account:Account) {
+    account.isSigned = true;
+    console.log(account);
+  }
+
+  signIn(email:string, password:string) {
     this.as
-      .getAccountByEmailNPassword('rob@gmail.com', 'rob')
+      .getAccountByEmailAndPassword(email, password)
       .subscribe((res) => {
-        // this.signedAccount = res;
-        console.log(res);
-        // this.getOrdersByAccountId(this.signedAccount.id);
+        this.onSuccessSigning(res);
       });
   }
+
+
+
 }
+
+
