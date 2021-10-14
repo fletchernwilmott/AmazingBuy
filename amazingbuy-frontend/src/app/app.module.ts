@@ -4,7 +4,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { StripeComponent } from './stripe/stripe.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatSliderModule } from '@angular/material/slider';
 import { MainComponent } from './main/main.component';
@@ -32,8 +32,9 @@ import { SellerAddProductComponent } from './seller-add-product/seller-add-produ
 import { SellerEditProductComponent } from './seller-edit-product/seller-edit-product.component';
 import { AccountViewComponent } from './account-view/account-view.component';
 import { MatFormFieldModule } from '@angular/material/form-field';
-//import { MatInputModule } from '@angular/material/input';
-//import { MatRadioModule } from '@angular/material/radio';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatInputModule } from '@angular/material/input';
+import { MatRadioModule } from '@angular/material/radio';
 import { ReactiveFormsModule } from '@angular/forms';
 import { SignUpComponent } from './sign-up/sign-up.component';
 import { MatSelectModule } from '@angular/material/select';
@@ -80,10 +81,11 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     MatListModule,
     MatTableModule,
     MatFormFieldModule,
-    //MatInputModule,
-    //MatRadioModule,
+    MatInputModule,
+    MatRadioModule,
     ReactiveFormsModule,
     MatSelectModule,
+    MatMenuModule,
     NgbModule,
   ],
   providers: [],

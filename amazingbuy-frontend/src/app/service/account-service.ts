@@ -19,7 +19,7 @@ export class AccountService {
     return this.http.get(`${this.baseUrl1}/${id}`);
   }
 
-  createAcccount(account: Object): Observable<Object> {
+  createAccount(account: Object): Observable<Object> {
     return this.http.post(`${this.baseUrl2}`, account);
   }
 
@@ -32,6 +32,7 @@ export class AccountService {
       .get<GetResponse>(this.baseUrl1)
       .pipe(map((res) => res._embedded.accounts));
   }
+
 }
 
 interface GetResponse {
