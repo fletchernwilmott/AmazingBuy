@@ -32,8 +32,8 @@ import { SellerAddProductComponent } from './seller-add-product/seller-add-produ
 import { SellerEditProductComponent } from './seller-edit-product/seller-edit-product.component';
 import { AccountViewComponent } from './account-view/account-view.component';
 import { MatFormFieldModule } from '@angular/material/form-field';
-//import { MatInputModule } from '@angular/material/input';
-//import { MatRadioModule } from '@angular/material/radio';
+import { MatInputModule } from '@angular/material/input';
+import { MatRadioModule } from '@angular/material/radio';
 import { ReactiveFormsModule } from '@angular/forms';
 import { SignUpComponent } from './sign-up/sign-up.component';
 import { MatSelectModule } from '@angular/material/select';
@@ -80,8 +80,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     MatListModule,
     MatTableModule,
     MatFormFieldModule,
-    //MatInputModule,
-    //MatRadioModule,
+    MatInputModule,
+    MatRadioModule,
     ReactiveFormsModule,
     MatSelectModule,
     NgbModule,

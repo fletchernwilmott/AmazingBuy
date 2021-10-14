@@ -1,11 +1,6 @@
-import { ifStmt } from '@angular/compiler/src/output/output_ast';
 import { Component, OnInit } from '@angular/core';
-
-import { NgForm } from '@angular/forms';
-import { FormsModule } from '@angular/forms';
-import { TestAccount } from '../test-account';
-
 import { AccountService } from '../service/account.service';
+import { Account } from '../service/account';
 
 
 @Component({
@@ -17,10 +12,9 @@ export class LoginComponent implements OnInit {
   constructor(private as: AccountService) {}
 
 
-  testaccountb = new TestAccount('email@gmail.com', 'MyPassword');
+  signin:any={};
   myform:any={}
   submitted=false;
-  constructor() { }
 
   ngOnInit(): void {
     console.log('hello');
@@ -29,26 +23,27 @@ export class LoginComponent implements OnInit {
   
   onSubmit() {
     this.submitted = true;
-    console.log('Email: ' + this.testaccountb.email);
-    console.log('Password: ' + this.testaccountb.password);
-
-    this.CheckAccount(this.testaccountb.email, this.testaccountb.password);
-    AssignSignedAccount();
+    console.log('Email: ' + this.signin.email);
+    console.log('Password: ' + this.signin.password);
+    this.signIn(this.signin.email, this.signin.password);
   }
 
+  onSuccessSigning(account:Account) {
+    account.isSigned = true;
+    console.log(account);
+  }
 
-
-  onSuccessSigning() {}
-
-  signIn() {
+  signIn(email:string, password:string) {
     this.as
-      .getAccountByEmailNPassword('rob@gmail.com', 'rob')
+      .getAccountByEmailAndPassword(email, password)
       .subscribe((res) => {
-        // this.signedAccount = res;
-        // console.log(this.signedAccount.);
-        // this.getOrdersByAccountId(this.signedAccount.id);
+        this.onSuccessSigning(res);
+        //console.log("Signed Account is now: " + this.as.getSignedAccount());
       });
   }
+
+
+
 }
 
 
