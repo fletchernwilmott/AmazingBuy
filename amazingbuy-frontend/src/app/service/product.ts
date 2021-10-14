@@ -2,7 +2,7 @@ import { Category } from './category';
 import { Order } from './order';
 
 export class Product {
-  id!: number;
+  productId!: number;
   name!: string;
   productImageURL!: string;
   productPrice!: number;
