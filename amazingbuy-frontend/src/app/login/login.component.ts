@@ -18,7 +18,7 @@ export class LoginComponent implements OnInit {
       .getAccountByEmailNPassword('rob@gmail.com', 'rob')
       .subscribe((res) => {
         // this.signedAccount = res;
-        // console.log(this.signedAccount.);
+        console.log(res);
         // this.getOrdersByAccountId(this.signedAccount.id);
       });
   }
