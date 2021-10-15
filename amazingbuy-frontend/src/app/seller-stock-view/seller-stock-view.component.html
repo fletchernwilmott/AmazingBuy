@@ -1,5 +1,23 @@
 <h2>Seller Stock View</h2>
 
+<div class="main-content">
+  <div class="section-content section-content-p30">
+      <div class="container-fluid">
+          <form [formGroup]="productForm" (ngSubmit)="onSubmit()">
+              <p>Id : <input type="text" id="id" formControlName="id"></p> <br>
+              <p>Name : <input type="text" id="name"  formControlName="name"></p> <br>
+              <p>Price : <input type="text" id="productPrice" formControlName="productPrice"> </p> <br>
+              <p>Quantity : <input type="text" id="productQuantity" formControlName="productQuantity">  </p> <br> 
+              <p><input type="submit" value="submit" id="b1_submit" name="b1_submit"></p>
+             </form>
+       
+      </div>
+  </div>
+</div>
+
+
+
+
 <!--
 <form [formGroup]="stockForm">
   <div formArrayName="products">
