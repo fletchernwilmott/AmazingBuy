@@ -2,6 +2,7 @@ import { createR3ProviderExpression } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Account } from '../service/account';
+import { AccountService } from '../service/account.service';
 import { Order } from '../service/order';
 import { OrderService } from '../service/order.service';
 import { Product } from '../service/product';
@@ -37,13 +38,25 @@ export class BuyerProductViewComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router,
     private ps: ProductService,
-    private os: OrderService
+    private os: OrderService,
+    private as: AccountService
   ) {}
 
   ngOnInit(): void {
+    this.signIn();
     this.id = this.route.snapshot.params['id'];
     this.getProductById(this.id);
   }
+
+  signIn() {
+    this.as
+      .getAccountByEmailNPassword('rob@gmail.edu', '1234')
+      .subscribe((res) => {
+        this.signedAccount = res;
+        // console.log(this.signedAccount.);
+      });
+  }
+
   newOrderDetails() {
     this.newOrder.paid = false;
     this.newOrder.shipped = false;
