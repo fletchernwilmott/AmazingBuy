@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Order } from '../service/order';
 import { OrderService } from '../service/order.service';
+import { Product } from '../service/product';
 
 export interface ProductElements {
   productId: number;
@@ -39,19 +40,39 @@ export class BuyerCartViewComponent implements OnInit {
   constructor(private os: OrderService) {}
   orders!: Order[];
   filteredOrders!: Order[];
-  ngOnInit(): void {}
+  unPaidProducts: Product[] = [];
+  totalCost!: number;
 
-  filterUnpaidOrders() {}
-
-  sumOrdersPrice() {}
-
-  onRemove() {}
+  ngOnInit(): void {
+    this.getOrdersByAccountId(1);
+  }
 
   getOrdersByAccountId(id: number) {
-    this.os
-      .findByAccountId(id)
-      .subscribe((res) =>
-        console.log(`Account 1 orders: ${JSON.stringify(res)}`)
-      );
+    this.os.getAllOrders().subscribe((res) => {
+      this.orders = res.filter((o) => o.paid === false);
+      console.log(this.orders);
+      this.getProducts(this.orders);
+      this.sumOrdersPrice(this.unPaidProducts);
+    });
   }
+
+  getProducts(orders: Order[]) {
+    orders.map((p) =>
+      p.products.map((i) => {
+        i ? this.unPaidProducts.push(i) : console.log('product not found');
+      })
+    );
+    console.log(this.unPaidProducts);
+  }
+  sumOrdersPrice(products: Product[]) {
+    const reducer = (previousValue: number, currentValue: number) =>
+      previousValue + currentValue;
+    let priceList: number[] = [];
+    products.map((p) => priceList.push(p.productPrice));
+    console.log(priceList);
+    console.log(priceList.reduce(reducer));
+    this.totalCost = priceList.reduce(reducer);
+  }
+
+  onRemove() {}
 }

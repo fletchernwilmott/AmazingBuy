@@ -28,8 +28,8 @@ export class OrderService {
   cancelOrder(id: number) {
     return this.http.delete(`${this.baseUrl2}/${id}`);
   }
-  getAllOrders(): Observable<any> {
-    return this.http.get(this.baseUrl2);
+  getAllOrders(): Observable<Order[]> {
+    return this.http.get<Order[]>(this.baseUrl2);
   }
   getOrderById(id: number): Observable<any> {
     return this.http.get(`${this.baseUrl}/${id}`);
