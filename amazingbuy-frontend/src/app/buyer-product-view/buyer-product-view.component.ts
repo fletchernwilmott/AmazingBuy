@@ -42,7 +42,6 @@ export class BuyerProductViewComponent implements OnInit {
 
   ngOnInit(): void {
     this.id = this.route.snapshot.params['id'];
-    console.log(this.id);
     this.getProductById(this.id);
   }
   newOrderDetails() {

@@ -11,7 +11,13 @@ import { SellerStockViewComponent } from './seller-stock-view/seller-stock-view.
 import { SignUpComponent } from './sign-up/sign-up.component';
 
 const routes: Routes = [
-  { path: '', component: ProductListComponent },
+  {
+    path: '',
+    redirectTo: 'home',
+    pathMatch: 'full',
+  },
+  { path: 'home', component: ProductListComponent },
+  { path: 'home/:id', component: ProductListComponent },
   { path: 'productview/:id', component: BuyerProductViewComponent },
   { path: 'cart', component: BuyerCartViewComponent },
   { path: 'login', component: LoginComponent },

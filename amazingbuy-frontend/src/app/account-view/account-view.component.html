@@ -1,43 +1,47 @@
 <h2>Account Information</h2>
-<table>
-    <tbody>
-        <tr>
-            <td> <label for="exampleFormControlInput1" class="form-label">Full name</label>
-            </td>
-            <td> <input type="text" readonly class="form-control" id="exampleFormControlInput1"
-                    value="{{signedAccount.fullName}}">
-            </td>
-        </tr>
-        <tr>
-            <td> <label for="exampleFormControlInput1" class="form-label">Email address</label>
-            </td>
-            <td> <input type="email" class="form-control" id="exampleFormControlInput1" value="{{signedAccount.email}}">
-            </td>
-        </tr>
-        <tr>
-            <td> <label for="exampleFormControlInput1" class="form-label">Password</label>
-            </td>
-            <td> <input type="password" class="form-control" id="exampleFormControlInput1"
-                    value="{{signedAccount.password}}">
-            </td>
-        </tr>
-        <tr>
-            <td> <label for="exampleFormControlInput1" class="form-label">Account Type</label>
-            </td>
-            <td> <input type="text" class="form-control" id="exampleFormControlInput1"
-                    value="{{signedAccount.accountType}}">
-            </td>
-        </tr>
-        <tr>
-            <td> <label for="exampleFormControlInput1" class="form-label">D.O.B.</label>
-            </td>
-            <td> <input type="text" class="form-control" readonly id="exampleFormControlInput1"
-                    value="{{signedAccount.dateOfBirth}}">
-            </td>
-        </tr>
+<form (ngSubmit)="onSubmit()" *ngIf="signedAccount">
 
-    </tbody>
-</table>
+    <table>
+        <tbody>
+            <tr>
+                <td> <label for="exampleFormControlInput1" class="form-label">Full name</label>
+                </td>
+                <td> <input type="text" readonly class="form-control" name="fullName"
+                        [(ngModel)]="signedAccount.fullName">
+                </td>
+            </tr>
+            <tr>
+                <td> <label for="exampleFormControlInput1" class="form-label">Email address</label>
+                </td>
+                <td> <input type="email" class="form-control" name="email" [(ngModel)]="signedAccount.email">
+                </td>
+            </tr>
+            <tr>
+                <td> <label for="exampleFormControlInput1" class="form-label">Password</label>
+                </td>
+                <td> <input type="password" class="form-control" name="password" [(ngModel)]="signedAccount.password">
+                </td>
+            </tr>
+            <tr>
+                <td> <label for="exampleFormControlInput1" class="form-label">Account Type</label>
+                </td>
+                <td> <input type="text" class="form-control" name="accountType" [(ngModel)]="signedAccount.accountType">
+                </td>
+            </tr>
+            <tr>
+                <td> <label for="exampleFormControlInput1" class="form-label">D.O.B.</label>
+                </td>
+                <td> <input type="text" class="form-control" readonly name="dateOfBirth"
+                        [(ngModel)]="signedAccount.dateOfBirth">
+                </td>
+            </tr>
+            <tr>
+                <td><button type="submit" class="btn btn-success">Submit</button></td>
+            </tr>
+
+        </tbody>
+    </table>
+</form>
 
 <!--Buyer-account-info & list of orders-->
 <!--Seller-account-info -->

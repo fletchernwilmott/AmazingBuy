@@ -48,16 +48,16 @@ public class OrderController {
 	}
 	
 	// update order // is shipped // is paid
-//	@PutMapping("/updateOrder/{id}")
-//	public ResponseEntity<Order> updateOrder(@PathVariable(value = "id") Long orderId, @RequestBody Order orderDetails) throws ResourceNotFoundException {
-//		Order oldOrder = orderRepository.findById(orderId)
-//				.orElseThrow(() -> new ResourceNotFoundException("Couldn't find an order with that Id number"));
-//		oldOrder.setProductsID(orderDetails.getProductsID());
-//		oldOrder.setPaid(orderDetails.isPaid());
-//		oldOrder.setShipped(orderDetails.isShipped());
-//		Order updatedOrder = orderRepository.save(oldOrder);
-//		return ResponseEntity.ok(updatedOrder);
-//	}
+	@PutMapping("/orders/{id}")
+	public ResponseEntity<Order> updateOrder(@PathVariable(value = "id") Long orderId, @RequestBody Order orderDetails) throws ResourceNotFoundException {
+		Order oldOrder = orderRepository.findById(orderId)
+				.orElseThrow(() -> new ResourceNotFoundException("Couldn't find an order with that Id number"));
+		oldOrder.setId(orderDetails.getId());
+		oldOrder.setPaid(orderDetails.isPaid());
+		oldOrder.setShipped(orderDetails.isShipped());
+		Order updatedOrder = orderRepository.save(oldOrder);
+		return ResponseEntity.ok(updatedOrder);
+	}
 	
 	// 
 	// cancel order / delete
