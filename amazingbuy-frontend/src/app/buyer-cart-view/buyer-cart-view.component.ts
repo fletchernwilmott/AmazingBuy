@@ -74,5 +74,11 @@ export class BuyerCartViewComponent implements OnInit {
     this.totalCost = priceList.reduce(reducer);
   }
 
-  onRemove() {}
+  onRemove(order: Order) {
+    console.log(order);
+    this.os.cancelOrder(order.id).subscribe((res) => {
+      console.log(res);
+      this.getOrdersByAccountId(1);
+    });
+  }
 }
