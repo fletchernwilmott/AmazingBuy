@@ -31,34 +31,14 @@ export class ProductService {
       .get<GetProducts>(uri)
       .pipe(map((res) => res._embedded.products));
   }
-<<<<<<< HEAD
-
-  getAllProducts(): Observable<Product[]>{
-=======
   getAllProducts(): Observable<Product[]> {
->>>>>>> 6163c9c127987b4eb9379dfa890f98919849c3a5
     return this.http
       .get<GetProducts>(this.baseUrl)
       .pipe(map((res) => res._embedded.products));
   }
-<<<<<<< HEAD
-
-  getProductById(id: number): Observable<Product>{
-    return this.http.get<Product>(`${this.baseUrl2}/${id}`).pipe(map(res => res));
-  }
-
-  updateProduct(id: number, value: any): Observable<Object>{
-    return this.http.put(`${this.baseUrl2}/${id}`, value);
-  }
-
-  // createAcccount(account: Object): Observable<Object> {
-  //   return this.http.post(`${this.baseUrl2}`, account);
-  // }
-=======
   findProductById(id: number): Observable<Product> {
     return this.http.get<Product>(`${this.baseUrl2}/${id}`);
   }
->>>>>>> 6163c9c127987b4eb9379dfa890f98919849c3a5
 }
 
 interface GetProducts {

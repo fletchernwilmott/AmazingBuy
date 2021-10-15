@@ -22,7 +22,7 @@ export class SellerEditProductComponent implements OnInit {
 
   getProductById(id: number){
     this.ps
-    .getProductById(id)
+    .findProductById(id)
     .subscribe((res) => this.product = res);
   }
 
