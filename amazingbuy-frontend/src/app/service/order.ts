@@ -3,10 +3,10 @@ import { Product } from './product';
 
 export class Order {
   id!: number;
-  isPaid!: boolean;
-  isShipped!: boolean;
+  paid!: boolean;
+  shipped!: boolean;
   shippingAddress!: string;
-  timeStamp!: string;
+  timestamp!: string;
   account!: Account;
   products!: Product[];
 }

@@ -9,9 +9,8 @@ import { ProductService } from '../service/product.service';
   providers: [ProductService],
 })
 export class SellerEditProductComponent implements OnInit {
-
   product!: Product;
-
+  
   constructor(private ps: ProductService) { }
 
   ngOnInit(): void {

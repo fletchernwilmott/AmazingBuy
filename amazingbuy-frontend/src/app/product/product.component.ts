@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Product } from '../service/product';
 
 @Component({
@@ -8,7 +9,14 @@ import { Product } from '../service/product';
 })
 export class ProductComponent implements OnInit {
   @Input() product!: Product;
-  constructor() {}
+  p!: Product;
+  constructor(private router: Router, private route: ActivatedRoute) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.p = this.route.snapshot.params['id'];
+  }
+
+  handleCardClick(product: Product) {
+    this.router.navigate(['productview', product.id]);
+  }
 }

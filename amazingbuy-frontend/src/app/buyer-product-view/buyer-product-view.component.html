@@ -1,26 +1,29 @@
-<p>buyer-product-view works!</p>
 <mat-grid-list cols="12" rowHeight="120px" class="product-view">
+
+
     <mat-grid-tile [colspan]="tiles[0].cols" [rowspan]="tiles[0].rows" [style.background]="tiles[0].color">
-        <img id="product-image" mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg"
-            alt="Photo of a Shiba Inu">
+        <mat-card class="example-card">
+            <img id="product-image" mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg"
+                alt="Photo of a Shiba Inu">
+        </mat-card>
+
     </mat-grid-tile>
     <mat-grid-tile [colspan]="tiles[1].cols" [rowspan]="tiles[1].rows" [style.background]="tiles[1].color">
         <mat-card class="example-card">
-            <mat-card-title>Product Name</mat-card-title>
-            <mat-card-subtitle>Category</mat-card-subtitle>
-            <mat-card-subtitle>Quantity</mat-card-subtitle>
+            <mat-card-title>{{product?product.name:null}}</mat-card-title>
+            <!-- <mat-card-subtitle>{{product?product.category.name:null}}</mat-card-subtitle> -->
+            <mat-card-subtitle>Quantity: {{product?product.productQuantity:null}}</mat-card-subtitle>
             <mat-card-content>
                 <p>Description</p>
-                <p>{{longText}}</p>
+                <p>{{product?longText:null}}</p>
             </mat-card-content>
             <mat-card-actions>
-                <label>Rating</label><br>
-                <label>Price</label>
+                <label>Rating: {{product?product.productRating:"No ratings available!"}}</label><br>
+                <label>Price: {{product?product.productPrice:null}}</label>
             </mat-card-actions>
         </mat-card>
     </mat-grid-tile>
     <mat-grid-tile [colspan]="tiles[2].cols" [rowspan]="tiles[2].rows" [style.background]="tiles[2].color">
-        <button>Add to cart</button>
-        {{tiles[2].text}}
+        <button (click)="onAddToCart(product)">Add to cart</button>
     </mat-grid-tile>
 </mat-grid-list>

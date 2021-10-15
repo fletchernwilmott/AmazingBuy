@@ -23,7 +23,7 @@ public class Product {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "product_id")
-	private Long productId;
+	private Long id;
 	
 	@Column(name = "product_name")
 	private String name;
@@ -48,11 +48,11 @@ public class Product {
 
 	// this is the foreign key
 	@ManyToOne
-	@JsonManagedReference
+	@JsonIgnore
 	@JoinColumn(name = "categoryId")
 	private Category category;
 	
-//	// order_id is the foreign key 
+	// order_id is the foreign key 
 	@JsonIgnore
 	@ManyToMany(mappedBy ="products")
 	private List<Order> orders;
@@ -73,12 +73,12 @@ public class Product {
 //		this.order = order;
 	}
 
-	public Long getProductId() {
-		return productId;
+	public Long getId() {
+		return id;
 	}
 
-	public void setProductId(Long productId) {
-		this.productId = productId;
+	public void setId(Long productId) {
+		this.id = productId;
 	}
 
 	public String getName() {
@@ -155,7 +155,7 @@ public class Product {
 
 	@Override
 	public String toString() {
-		return "Product [productId=" + productId + ", name=" + name + ", productImageURL="
+		return "Product [productId=" + id + ", name=" + name + ", productImageURL="
 				+ productImageURL + ", productPrice=" + productPrice + ", productQuantity=" + productQuantity
 				+ ", productLongDescription=" + productLongDescription + ", productShortDescription="
 				+ productShortDescription + ", productRating=" + productRating + "]";

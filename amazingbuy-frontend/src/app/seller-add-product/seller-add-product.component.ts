@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
 import { Product } from '../service/product';
+<<<<<<< HEAD
 import { ProductService } from '../service/product.service';
+=======
+>>>>>>> 6163c9c127987b4eb9379dfa890f98919849c3a5
 
 @Component({
   selector: 'app-seller-add-product',
@@ -24,12 +27,12 @@ export class SellerAddProductComponent implements OnInit {
   constructor(private ps: ProductService) {}
 
   ngOnInit(): void {
-    this.addProduct();
-  }
-
-  addProduct(){
     
   }
 
 
+  createProduct(product: Product) {}
+  onAdd() {
+    this.createProduct;
+  }
 }

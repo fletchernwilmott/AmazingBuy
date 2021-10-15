@@ -35,15 +35,17 @@ export class AccountService {
   getAccountByEmailNPassword(
     email: string,
     password: string
-  ): Observable<Object> {
-    const uri = `${this.baseUrl}/search/getOne?email=${email}&password=${password}`;
-    return this.http.get(uri);
+  ): Observable<Account> {
+    // const uri = `${this.baseUrl}/search/getOne?email=${email}&password=${password}`;
+    const uri = `${this.baseUrl2}/${email}/${password}`;
+    return this.http.get<Account>(uri).pipe(map((res) => res));
   }
 }
 interface GetResponse {
   _embedded: {
     accounts: Account[];
   };
+  account: Account;
   // _links: {
   //   order: Account[];
   // };

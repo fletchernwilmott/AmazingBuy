@@ -10,6 +10,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
@@ -25,10 +26,10 @@ public class Order {
 	private Long id;
 	
 	@Column(name = "is_paid")
-	private boolean isPaid;
+	private boolean paid;
 	
 	@Column(name = "is_shipped")
-	private boolean isShipped;
+	private boolean shipped;
 	
 	@Column(name = "shipping_address")
 	private String shippingAddress;
@@ -37,7 +38,11 @@ public class Order {
 	private String timestamp;
 	
 	@ManyToMany
-	private List<Product> products = new ArrayList<Product>();
+	@JoinTable(
+			  name = "orders_products", 
+			  joinColumns = @JoinColumn(name = "order_id"), 
+			  inverseJoinColumns = @JoinColumn(name = "product_id"))
+	private List<Product> products;
 	
 	@ManyToOne
 	@JoinColumn(name = "account_id")
@@ -51,21 +56,24 @@ public class Order {
 		this.id = orderId;
 	}
 
-	public boolean isPaid() {
-		return isPaid;
-	}
 
-	public void setPaid(boolean isPaid) {
-		this.isPaid = isPaid;
-	}
 
 	public boolean isShipped() {
-		return isShipped;
+		return shipped;
 	}
 
-	public void setShipped(boolean isShipped) {
-		this.isShipped = isShipped;
+	public void setShipped(boolean shipped) {
+		this.shipped = shipped;
 	}
+
+	public boolean isPaid() {
+		return paid;
+	}
+
+	public void setPaid(boolean paid) {
+		this.paid = paid;
+	}
+
 
 	public String getShippingAddress() {
 		return shippingAddress;
@@ -91,8 +99,8 @@ public class Order {
 //		this.product = product;
 //	}
 
-	public Long getAccount() {
-		return account.getId();
+	public Account getAccount() {
+		return account;
 	}
 
 	public void setAccount(Account account) {
@@ -101,8 +109,8 @@ public class Order {
 
 	public Order( boolean isPaid, boolean isShipped, String shippingAddress, String timestamp, Account account) {
 		super();
-		this.isPaid = isPaid;
-		this.isShipped = isShipped;
+		this.paid = isPaid;
+		this.shipped = isShipped;
 		this.shippingAddress = shippingAddress;
 		this.timestamp = timestamp;
 //		this.product = product;
@@ -111,7 +119,7 @@ public class Order {
 
 	@Override
 	public String toString() {
-		return "Order [ordertId=" + id + ", isPaid=" + isPaid + ", isShipped=" + isShipped + ", shippingAddress="
+		return "Order [ordertId=" + id + ", isPaid=" + paid + ", isShipped=" + shipped + ", shippingAddress="
 				+ shippingAddress + ", timestamp=" + timestamp + ", account=" + account + "Products IDs: "+ products
 				+ "]";
 	}
@@ -128,6 +136,5 @@ public class Order {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	
 
 }

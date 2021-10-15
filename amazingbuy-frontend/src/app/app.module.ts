@@ -4,7 +4,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { StripeComponent } from './stripe/stripe.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatSliderModule } from '@angular/material/slider';
 import { MainComponent } from './main/main.component';
@@ -34,10 +34,12 @@ import { AccountViewComponent } from './account-view/account-view.component';
 import { MatFormFieldModule } from '@angular/material/form-field';
 //import { MatInputModule } from '@angular/material/input';
 //import { MatRadioModule } from '@angular/material/radio';
-import { ReactiveFormsModule } from '@angular/forms';
 import { SignUpComponent } from './sign-up/sign-up.component';
 import { MatSelectModule } from '@angular/material/select';
 import { LoginComponent } from './login/login.component';
+import { MatMenuModule } from '@angular/material/menu';
+// MDB Angular Free
+import { MdbFormsModule } from 'mdb-angular-ui-kit/forms';
 
 @NgModule({
   declarations: [
@@ -83,6 +85,8 @@ import { LoginComponent } from './login/login.component';
     //MatRadioModule,
     ReactiveFormsModule,
     MatSelectModule,
+    MatMenuModule,
+    MdbFormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

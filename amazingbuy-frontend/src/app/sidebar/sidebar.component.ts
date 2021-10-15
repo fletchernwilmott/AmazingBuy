@@ -5,10 +5,12 @@ import { CategoryService } from '../service/category.service';
 @Component({
   selector: 'app-sidebar',
   templateUrl: './sidebar.component.html',
-  styleUrls: ['./sidebar.component.css']
+  styleUrls: ['./sidebar.component.css'],
 })
 export class SidebarComponent implements OnInit {
+  constructor() {}
 
+<<<<<<< HEAD
   categories!: Category[];
 
   constructor(private cs: CategoryService) { }
@@ -25,4 +27,8 @@ export class SidebarComponent implements OnInit {
   onClick(){}
 
 
+=======
+  ngOnInit(): void {}
+  handleClick() {}
+>>>>>>> 6163c9c127987b4eb9379dfa890f98919849c3a5
 }

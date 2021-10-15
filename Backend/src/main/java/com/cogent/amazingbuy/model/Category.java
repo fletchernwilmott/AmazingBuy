@@ -15,6 +15,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name="category")
@@ -26,7 +27,8 @@ public class Category {
 	
 	@Column(name="category_name")
 	private String name;
-	@JsonBackReference
+	@JsonIgnore
+//	@JsonBackReference
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "category",orphanRemoval = true)
 	private List<Product> products;
 	

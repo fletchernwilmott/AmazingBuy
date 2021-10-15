@@ -1,17 +1,41 @@
-<mat-toolbar>
-    <p>navbar works!</p>
-    <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
-        <mat-icon>menu</mat-icon>
-    </button>
-    <span>AmazingBuy</span>
+<mat-toolbar class="navbar">
+    <a routerLink="/"><button class="btn btn-success pull-right">
+            <span><b>AmazingBuy</b></span>
+        </button></a>
+    <!--make brand clickable-->
+
     <span class="example-spacer"></span>
-    <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
-        <mat-icon>favorite</mat-icon>
-    </button>
-    <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
-        <mat-icon>share</mat-icon>
-    </button>
-    <input id="add-to-cart-button" name="submit.add-to-cart" title="Add to Shopping Cart"
-        data-hover="Select <b>__dims__</b> from the left<br> to add to Shopping Cart" class="a-button-input"
-        type="submit" value="Add to Cart" aria-labelledby="submit.add-to-cart-announce">
+    <a routerLink="/login">
+        <button id="signin" class="btn btn-success pull-right">
+            <span>Signin</span>
+        </button>
+    </a>
+    <a routerLink="/signup">
+        <button class="btn btn-success pull-right">
+            <span>Signup</span>
+        </button>
+    </a>
+    <button mat-button [matMenuTriggerFor]="menu">My Account</button>
+    <mat-menu #menu="matMenu">
+        <button routerLink="/account" mat-menu-item>Account Info</button>
+        <button routerLink="/orders" mat-menu-item>Orders</button>
+        <button routerLink="/stock" mat-menu-item>Products</button>
+        <button routerLink="/addproduct" mat-menu-item>Add Product</button>
+        <button routerLink="/dashboard" mat-menu-item>Seller Dashboard</button>
+        <button (click)="onLogout" mat-menu-item>Logout</button>
+    </mat-menu>
+
+    <a routerLink="/cart">
+        <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
+            <mat-icon>shopping_cart</mat-icon>
+        </button>
+    </a>
+    <!--search bar-->
+    <!--Signin/signup-->
+    <!--on sign in
+    -my account dropdown(buyer:{account-view,orders-view,signout},
+    Seller:{account-view,all-orders,stock-view,dashboard,add-product,logout})
+    -cart(buyer only)
+    -->
+
 </mat-toolbar>
