@@ -1,6 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
 import { Product } from '../service/product';
 import { ProductService } from '../service/product.service';
 
@@ -18,29 +16,26 @@ export interface ProductElements {
   providers: [ProductService],
 })
 export class SellerStockViewComponent implements OnInit {
-
-  productForm = new FormGroup({
-    id: new FormControl(),
-    name: new FormControl(),
-    productPrice: new FormControl(),
-    productQuantity: new FormControl()
-  });
-
   products!: Product[];
 
-
-  constructor(private ps: ProductService, private router: Router) { }
+  constructor(private ps: ProductService) {}
 
   ngOnInit(): void {
     this.getAllProducts();
   }
 
-  public onSubmit(): void{
-
-  }
-
-  getAllProducts(){
+  getAllProducts() {
     this.ps.getAllProducts().subscribe((res) => (this.products = res));
   }
 
+  updateProduct(product: Product) {
+    this.ps.updateProduct(product.id, product).subscribe(
+      (res) => console.log(res),
+      (error) => console.log(error)
+    );
+  }
+  onSubmit(p: Product) {
+    console.log(p.productQuantity);
+    this.updateProduct(p);
+  }
 }

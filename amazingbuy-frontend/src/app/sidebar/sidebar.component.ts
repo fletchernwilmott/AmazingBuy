@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Category } from '../service/category';
 import { CategoryService } from '../service/category.service';
 
@@ -8,21 +9,18 @@ import { CategoryService } from '../service/category.service';
   styleUrls: ['./sidebar.component.css'],
 })
 export class SidebarComponent implements OnInit {
-
   categories!: Category[];
-
-  constructor(private cs: CategoryService) { }
-
+  id!: number;
+  constructor(private cs: CategoryService, private router: Router) {}
   ngOnInit(): void {
     this.getAllCategories();
   }
 
-  getAllCategories(){
+  getAllCategories() {
     this.cs.getAllCategories().subscribe((res) => (this.categories = res));
   }
 
-  //filter items by category
-  onClick(){}
-
-
+  handleTabClick(id: number) {
+    this.router.navigate(['home', id]);
+  }
 }

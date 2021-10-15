@@ -90,12 +90,12 @@ public class ProductController {
 	// delete product
 	// seller only
 	// dimple returns a map here instead, not sure why
-	@DeleteMapping("/products/{id}")
-	public String deleteProduct(@PathVariable(value = "id") Long productId) throws ResourceNotFoundException {
-		Product p = productRepository.findById(productId)
-				.orElseThrow(() -> new ResourceNotFoundException("Couldn't find a product with that Id number"));
-		productRepository.delete(p);
-		return "product deleted";
-	}
+//	@DeleteMapping("/products/{id}")
+//	public String deleteProduct(@PathVariable(value = "id") Long productId) throws ResourceNotFoundException {
+//		Product p = productRepository.findById(productId)
+//				.orElseThrow(() -> new ResourceNotFoundException("Couldn't find a product with that Id number"));
+//		productRepository.delete(p);
+//		return "product deleted";
+//	}
 
 }

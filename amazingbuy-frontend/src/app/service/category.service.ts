@@ -14,20 +14,15 @@ export class CategoryService {
   // this url is for all other methods
   private baseUrl2 = 'http://localhost:8080/category';
 
-  getAllCategories(){
+  getAllCategories(): Observable<Category[]> {
     return this.http
-    .get<GetResponse>(this.baseUrl)
-    .pipe(map((res) => res._embedded.categories));
+      .get<GetCategories>(this.baseUrl)
+      .pipe(map((res) => res._embedded.categories));
   }
-
-  getCategoryById(id: number): Observable<any>{
-    return this.http.get(`${this.baseUrl}/${id}`);
-  }
-
 }
 
-interface GetResponse {
+interface GetCategories {
   _embedded: {
     categories: Category[];
-  }
+  };
 }
