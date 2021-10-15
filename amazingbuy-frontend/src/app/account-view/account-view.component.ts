@@ -32,6 +32,7 @@ export class AccountViewComponent implements OnInit {
       });
   }
   getAccountById() {}
+
   getOrdersByAccountId(id: number) {
     this.os
       .findByAccountId(id)
@@ -39,4 +40,9 @@ export class AccountViewComponent implements OnInit {
         console.log(`Account 1 orders: ${JSON.stringify(res)}`)
       );
   }
+
+  getSignedAccountDetails() {
+    
+  }
+
 }

@@ -8,5 +8,4 @@ export class Account {
   accountType!: string;
   dateOfBirth!: string;
   order!: Order[];
-  isSigned:boolean = false;
 }

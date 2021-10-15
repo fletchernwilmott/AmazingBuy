@@ -17,10 +17,11 @@ export class AccountService {
   private baseUrl2 = 'http://localhost:8080/accounts';
 
   getAccountById(id: number): Observable<any> {
+    console.log("Works");
     return this.http.get(`${this.baseUrl}/${id}`);
   }
 
-  createAcccount(account: Object): Observable<Object> {
+  createAccount(account: Object): Observable<Object> {
     return this.http.post(`${this.baseUrl2}`, account);
   }
 

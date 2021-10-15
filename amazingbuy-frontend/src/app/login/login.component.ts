@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AccountService } from '../service/account.service';
 import { Account } from '../service/account';
+import { SignAccount } from '../service/sign-account';
 
 
 @Component({
@@ -9,7 +10,7 @@ import { Account } from '../service/account';
   styleUrls: ['./login.component.css'],
 })
 export class LoginComponent implements OnInit {
-  constructor(private as: AccountService) {}
+  constructor(private as: AccountService, private sa: SignAccount) {}
 
 
   signin:any={};
@@ -29,7 +30,7 @@ export class LoginComponent implements OnInit {
   }
 
   onSuccessSigning(account:Account) {
-    account.isSigned = true;
+    SignAccount. = true;
     console.log(account);
   }
 

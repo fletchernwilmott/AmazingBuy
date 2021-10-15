@@ -46,7 +46,7 @@ public class AccountController {
 	}
 	
 	@PostMapping("/accounts")
-	public String createStudent(@RequestBody Account account) {
+	public String createAccount(@RequestBody Account account) {
 		accountRepository.save(account);
 		return "Added successfully!";
 	}
