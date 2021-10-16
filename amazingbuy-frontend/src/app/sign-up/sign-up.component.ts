@@ -11,36 +11,50 @@ import { AccountService } from '../service/account.service';
   styleUrls: ['./sign-up.component.css'],
 })
 export class SignUpComponent implements OnInit {
+  constructor(private as: AccountService) {}
+
   hide = true;
-  email = new FormControl('', [Validators.required, Validators.email]);
-  newAccount:any= {};
+  //fullname = new FormControl('', [Validators.required]);
+  //email = new FormControl('', [Validators.required, Validators.email]);
+  newAccount= new Account();
   myForm:any={}
   
 
-  getErrorMessage() {
+/*  getErrorMessage() {
     if (this.email.hasError('required')) {
       return 'You must enter a value';
     }
 
     return this.email.hasError('email') ? 'Not a valid email' : '';
-  }
-  constructor() {}
+  }*/
 
   ngOnInit(): void {}
 
   onAddAccount() {
-    //this.newAccount.fullName = this.newForm.fullName;
-    //this.newAccount.email = this.newForm.email;
-
+    
     console.log('Full Name: '+ this.newAccount.fullName);
     console.log('Email: ' + this.newAccount.email);
     console.log('Password: ' + this.newAccount.password);
     console.log('dateOfBirth: ' + this.newAccount.dateOfBirth);
+    console.log('Account Type: ' + this.newAccount.accountType);
 
-    //this.createAccount();
+    this.createAccount(
+      this.newAccount.fullName,
+      this.newAccount.email,
+      this.newAccount.password,
+      this.newAccount.dateOfBirth,
+      this.newAccount.accountType
+    );
+
   }
 
-  createAccount(id:number, ) {
-
-  }
+  createAccount(
+    name:string, 
+    email:string, 
+    password:string, 
+    dateOfBirth:string, 
+    accountType:string) 
+    {
+      this.as.createAccount(this.newAccount).subscribe();
+    }
 }

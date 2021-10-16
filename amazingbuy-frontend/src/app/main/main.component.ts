@@ -13,8 +13,8 @@ export interface Tile {
 export class MainComponent implements OnInit {
   tiles: Tile[] = [
     { text: 'One', cols: 4, rows: 1, color: '#233D53' },
-    { text: 'Two', cols: 1, rows: 7, color: '#064B73' },
-    { text: 'Three', cols: 3, rows: 7, color: '#F9F3E6' },
+    { text: 'Two', cols: 1, rows: 7, color: '#808080' },
+    { text: 'Three', cols: 3, rows: 7, color: '#FFFFFF' },
   ];
   constructor() {}
 
