@@ -14,18 +14,19 @@ export class SignUpComponent implements OnInit {
   constructor(private as: AccountService) {}
 
   hide = true;
-  email = new FormControl('', [Validators.required, Validators.email]);
+  //fullname = new FormControl('', [Validators.required]);
+  //email = new FormControl('', [Validators.required, Validators.email]);
   newAccount= new Account();
   myForm:any={}
   
 
-  getErrorMessage() {
+/*  getErrorMessage() {
     if (this.email.hasError('required')) {
       return 'You must enter a value';
     }
 
     return this.email.hasError('email') ? 'Not a valid email' : '';
-  }
+  }*/
 
   ngOnInit(): void {}
 
@@ -54,6 +55,6 @@ export class SignUpComponent implements OnInit {
     dateOfBirth:string, 
     accountType:string) 
     {
-      this.as.createAccount(this.newAccount);
+      this.as.createAccount(this.newAccount).subscribe();
     }
 }

@@ -30,18 +30,25 @@ export class LoginComponent implements OnInit {
   }
 
   onSuccessSigning(account:Account) {
-    SignAccount. = true;
+    //SignAccount. = true;
     console.log(account);
   }
 
   signIn(email:string, password:string) {
-    this.as
+    try{
+      this.as
       .getAccountByEmailAndPassword(email, password)
       .subscribe((res) => {
         this.onSuccessSigning(res);
       });
+    }catch(error){
+      this.onFaliureSigning();
+    }
   }
-
+  
+onFaliureSigning():void {
+  console.log("This is wrong");
+}
 
 
 }

@@ -7,6 +7,6 @@ export class SignAccount {
     }
 
     logout(){
-        this.signedAccount = null;
+       // this.signedAccount = null;
     }
 }

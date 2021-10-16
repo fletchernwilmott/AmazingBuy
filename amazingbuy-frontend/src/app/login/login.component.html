@@ -1,17 +1,26 @@
 <p>login works!</p>
 
-<div class="container">
-<div class="card"></div>
+<div class="container"> 
 <div class="card">
 	<h1 class="title">Login</h1>
-		<form (ngSubmit)="onSubmit()" #myform="ngForm">
-		<div class="mb-3">
-			<label class="form-label" for="email">Email</label>
-			<input class="form-control form-control-lg" id="email" type="email" placeholder="Email" required [(ngModel)]="signin.email" name="email">
+		<form class="mb-3" data-testid="" novalidate>
+		<div class="form-group">
+			<label class="d-block" for="emailField">Email</label>
+			<div class="input-group bg-white border border-dark">
+				<input class="form-control form-control-lg border-0" name="emailField" id="emailField" 
+				type="email" aria-label="Email Account for AmazingBuy" aria-required="true" 
+				aria-invalid="true" aria-describedby="emailError" required [(ngModel)]="signin.email">
+			</div>
+			<p class="position-absolute text-small text-left text-danger font italic" id="emailError" 
+			aria-live>Invalid Email</p>
 		</div>
-		<div class="mb-3">
-			<label class="form-label" for="password">Password</label>
-			<input class="form-control form-control-lg" id="password" type="password" placeholder="Password" required [(ngModel)]="signin.password" name="password">
+		<div class="form-group">
+			<label class="d-block" for="password">Password</label>
+			<div class="input-group bg-white border border-dark">
+			<input class="form-control form-control-lg border-0" name="passwordField" id="passwordField" 
+			type="password" aria-label="Password for Account in AmazingBuy" aria-required="true" 
+			aria-invalid="false" aria-describedby="passwordError" required [(ngModel)]="signin.password" name="password">
+			</div>
 		</div>
 		<button type="submit" class="btn btn-success" [disabled]="!myform.form.valid">Sign in</button>
 		</form>
