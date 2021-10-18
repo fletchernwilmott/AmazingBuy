@@ -1,4 +1,63 @@
-<p>seller-edit-product works!</p>
+
+<!--<p>seller-edit-product works!</p> 
+<section class="vh-100" style="background-color:aqua;">
+    <div class="container py-5 h-100">
+        <div class="row d-flex justify-content-center align-items-center h-100">
+            <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+                <div class="card shadow-2-strong" style="background-color:orange; border-radius: 2rem;">
+                    <div class="card-body p-5 text-center">
+
+                        <h1 class="mb-5">Edit Product</h1>
+
+                        <form (ngSubmit)="onEditAccount()" #myForm="ngForm">
+                            <div class="form-outline">
+                                <input id="ProductName" class="form-control form-control-lg" required
+                                    [(ngModel)]="product.ProductName" name="ProductName" />
+                                <label class="form-label" for="ProductName">Product Name</label>
+                            </div>
+                            <div class="form-outline">
+                                <input type="category" id="category" class="form-control form-control-lg" required
+                                    [(ngModel)]="product.category" name="category" />
+                                <label class="form-label" for="category">Category</label>
+                            </div>
+                            <div class="form-outline">
+                                <input id="image" class="form-control form-control-lg" required
+                                    [(ngModel)]="product.image" name="image" />
+                                <label class="form-label" for="image">Image URL</label>
+                            </div>
+                            <div class="form-outline">
+                                <input id="price" class="form-control form-control-lg"
+                                    required [(ngModel)]="product.price" name="price" />
+                                <label class="form-label" for="price">Price</label>
+                            </div>
+                            <div class="form-outline">
+                                <input id="Quantity" class="form-control form-control-lg"
+                                    required [(ngModel)]="product.Quantity" name="Quantity" />
+                                <label class="form-label" for="Quantity">Quantity</label>
+                            </div>
+                            <div class="form-outline">
+                                <input id="NewDateOfBirth" class="form-control form-control-lg"
+                                    required [(ngModel)]="newAccount.dateOfBirth" name="dateOfBirth" />
+                                <label class="form-label" for="NewDateOfBirth">Short Description</label>
+                            </div>
+                            <div class="form-outline">
+                                <input id="NewDateOfBirth" class="form-control form-control-lg"
+                                    required [(ngModel)]="newAccount.dateOfBirth" name="dateOfBirth" />
+                                <label class="form-label" for="NewDateOfBirth">Long Description</label>
+                            </div>
+                            <label>Account Type: </label>
+                            <button class="btn btn-primary btn-lg btn-block" type="submit"
+                                [disabled]="!myForm.form.valid">Sign
+                                Up</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section> -->
+
+
 <div class="example-container">
     <form style="background-color: #F9F3E6; width: 600px;">
         <mat-form-field appearance="outline">

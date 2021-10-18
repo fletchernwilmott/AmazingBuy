@@ -18,7 +18,7 @@ export class BuyerCartViewComponent implements OnInit {
     'productId',
     'productName',
     'productPrice',
-    'remove',
+    'command',
   ];
 
   ELEMENT_DATA: ProductElements[] = [

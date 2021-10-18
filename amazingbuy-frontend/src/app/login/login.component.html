@@ -1,31 +1,57 @@
-<p>login works!</p>
-
-<div class="container"> 
-<div class="card">
-	<h1 class="title">Login</h1>
-		<form class="mb-3" data-testid="" novalidate>
-		<div class="form-group">
-			<label class="d-block" for="emailField">Email</label>
-			<div class="input-group bg-white border border-dark">
-				<input class="form-control form-control-lg border-0" name="emailField" id="emailField" 
-				type="email" aria-label="Email Account for AmazingBuy" aria-required="true" 
-				aria-invalid="true" aria-describedby="emailError" required [(ngModel)]="signin.email">
+<section class="vh-100" style="background-color:aqua;">
+	<div class="container py-5 h-100">
+	  <div class="row d-flex justify-content-center align-items-center h-100">
+		<div class="col-12 col-md-8 col-lg-6 col-xl-5">
+		  <div class="card shadow-2-strong" style="border-radius: 1rem;">
+			<div class="card-body p-5 text-center">
+  
+			  <h3 class="mb-5" style="text-transform: capitalize; text-shadow: 1px;">Sign in</h3>
+  
+			  <div class="form-outline mb-4">
+				<input type="email" id="newEmail" class="form-control form-control-lg" placeholder="Email"/>
+			  </div>
+  
+			  <div class="form-outline mb-4">
+				<input type="password" id="newPassword" class="form-control form-control-lg" placeholder="Password"/>
+			  </div>
+  
+			  <button class="btn btn-primary btn-lg btn-block" type="submit">Login</button>
 			</div>
-			<p class="position-absolute text-small text-left text-danger font italic" id="emailError" 
-			aria-live>Invalid Email</p>
+		  </div>
 		</div>
-		<div class="form-group">
-			<label class="d-block" for="password">Password</label>
-			<div class="input-group bg-white border border-dark">
-			<input class="form-control form-control-lg border-0" name="passwordField" id="passwordField" 
-			type="password" aria-label="Password for Account in AmazingBuy" aria-required="true" 
-			aria-invalid="false" aria-describedby="passwordError" required [(ngModel)]="signin.password" name="password">
+	  </div>
+	</div>
+  </section>
+
+<!-- 
+
+
+<div class="row d-flex justify-content-center align-items-center h-100">
+	<div class="col-12 col-md-8 col-lg-6 col-xl-5">
+		<div class="card shadow-2-strong" style="border-radius: 1rem;">
+			<div class="form-group">
+				<label class="d-block" for="emailField">Email</label>
+				<div class="input-group bg-white border border-dark">
+					<input class="form-control form-control-lg border-0" name="emailField" id="emailField" type="email"
+						aria-label="Email Account for AmazingBuy" aria-required="true" aria-invalid="true"
+						aria-describedby="emailError" required [(ngModel)]="signin.email">
+				</div>
+				<p class="position-absolute text-small text-left text-danger font italic" id="emailError" aria-live>
+					Invalid
+					Email</p>
 			</div>
+			<div class="form-group">
+				<label class="d-block" for="password">Password</label>
+				<div class="input-group bg-white border border-dark">
+					<input class="form-control form-control-lg border-0" name="passwordField" id="passwordField"
+						type="password" aria-label="Password for Account in AmazingBuy" aria-required="true"
+						aria-invalid="false" aria-describedby="passwordError" required [(ngModel)]="signin.password"
+						name="password">
+				</div>
+			</div>
+			<button type="submit" class="btn btn-success">Sign in</button>
 		</div>
-		<button type="submit" class="btn btn-success" [disabled]="!myform.form.valid">Sign in</button>
-		</form>
-	
-</div>
-</div>
+	</div>
+</div> 
 
-
+ -->

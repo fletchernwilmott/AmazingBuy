@@ -1,29 +1,19 @@
-<mat-grid-list cols="12" rowHeight="120px" class="product-view">
+<div class="card shadow-2-strong" style="border-radius: 1rem;">
 
+    <img src="https://material.angular.io/assets/img/examples/shiba2.jpg" class="w-100 border-bottom"
+        alt="Sample Image">
 
-    <mat-grid-tile [colspan]="tiles[0].cols" [rowspan]="tiles[0].rows" [style.background]="tiles[0].color">
-        <mat-card class="example-card">
-            <img id="product-image" mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg"
-                alt="Photo of a Shiba Inu">
-        </mat-card>
-
-    </mat-grid-tile>
-    <mat-grid-tile [colspan]="tiles[1].cols" [rowspan]="tiles[1].rows" [style.background]="tiles[1].color">
-        <mat-card class="example-card">
-            <mat-card-title>{{product?product.name:null}}</mat-card-title>
-            <mat-card-subtitle>{{product?product.category.name:null}}</mat-card-subtitle>
-            <mat-card-subtitle>Quantity: {{product?product.productQuantity:null}}</mat-card-subtitle>
-            <mat-card-content>
-                <p>Description</p>
-                <p>{{product?longText:null}}</p>
-            </mat-card-content>
-            <mat-card-actions>
-                <label>Rating: {{product?product.productRating:"No ratings available!"}}</label><br>
-                <label>Price: {{product?product.productPrice:null}}</label>
-            </mat-card-actions>
-        </mat-card>
-    </mat-grid-tile>
-    <mat-grid-tile [colspan]="tiles[2].cols" [rowspan]="tiles[2].rows" [style.background]="tiles[2].color">
-        <button (click)="onAddToCart(product)">Add to cart</button>
-    </mat-grid-tile>
-</mat-grid-list>
+    <div class="card-body">
+        <h5 class="card-title">{{product?product.name:null}}</h5>
+        <p class="card-text">{{product?longText:null}}</p>
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item">{{product?product.category.name:null}}</li>
+            <li class="list-group-item">Quantity: {{product?product.productQuantity:null}}</li>
+            <li class="list-group-item">Rating: {{product?product.productRating:"No ratings available!"}}</li>
+            <li class="list-group-item">Price: {{product?product.productPrice:null}}</li>
+        </ul>
+        <div class="card-body">
+            <a href="#" class="card-link"><button (click)="onAddToCart(product)">Add to cart</button></a>
+        </div>
+    </div>
+</div>

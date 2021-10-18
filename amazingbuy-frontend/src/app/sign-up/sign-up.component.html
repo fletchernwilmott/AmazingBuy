@@ -1,3 +1,69 @@
+<section class="vh-100" style="background-color:aqua;">
+    <div class="container py-5 h-100">
+        <div class="row d-flex justify-content-center align-items-center h-100">
+            <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+                <div class="card shadow-2-strong" style="background-color:orange; border-radius: 2rem;">
+                    <div class="card-body p-5 text-center">
+
+                        <h1 class="mb-5">Create New Account</h1>
+
+                        <form (ngSubmit)="onAddAccount()" #myForm="ngForm">
+                            <div class="form-outline">
+                                <input id="NewFullName" class="form-control form-control-lg" required
+                                    [(ngModel)]="newAccount.fullName" name="fullName" />
+                                <label class="form-label" for="NewFullName">Full Name</label>
+                            </div>
+                            <div class="form-outline">
+                                <input type="email" id="NewEmail" class="form-control form-control-lg" required
+                                    [(ngModel)]="newAccount.email" name="email" />
+                                <label class="form-label" for="NewEmail">Email</label>
+                            </div>
+                            <div class="form-outline">
+                                <input type="password" id="NewPassword" class="form-control form-control-lg"
+                                    [type]="hide ? 'password' : 'text'" required [(ngModel)]="newAccount.password"
+                                    name="password" />
+                                <button (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+                                    [attr.aria-pressed]="hide">
+                                    <i class="bi bi-eye-slash">{{hide ? 'visibility_off' : 'visibility'}}</i>
+                                </button>
+                                <label class="form-label" for="NewPassword">Password</label>
+                            </div>
+                            <div class="form-outline">
+                                <input id="NewDateOfBirth" class="form-control form-control-lg"
+                                    required [(ngModel)]="newAccount.dateOfBirth" name="dateOfBirth" />
+                                <label class="form-label" for="NewDateOfBirth">Date Of Birth</label>
+                            </div>
+                            <label>Account Type: </label>
+                            <div class="form-outline mb-4">
+                                <input type="radio" class="form-check-input" value="buyer" name="options" id="radio1"
+                                    checked [(ngModel)]="newAccount.accountType" name="accountType">
+                                <label class="form-check-label" for="radio1">Buyer</label>
+
+                                <input type="radio" class="form-check-input" value="seller" name="options" id="radio2"
+                                    [(ngModel)]="newAccount.accountType" name="accountType">
+                                <label class="form-check-label" for="radio2">Seller</label>
+                            </div>
+                            <button class="btn btn-primary btn-lg btn-block" type="submit"
+                                [disabled]="!myForm.form.valid">Sign
+                                Up</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- 
+
+    <div class="form-outline mb-4">
+                            <input [type]="hide ? 'password' : 'text'" required
+                                [(ngModel)]="newAccount.password" name="password">
+                            <button (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+                                [attr.aria-pressed]="hide">
+                                <i class="bi bi-eye-slash">{{hide ? 'visibility_off' : 'visibility'}}</i>
+                            </button>
+
+
 <div class="Simple example">
     <form (ngSubmit)="onAddAccount()" #myForm="ngForm">
         <p>
@@ -10,7 +76,7 @@
             <mat-form-field> 
                 <mat-label>Email</mat-label> 
                 <input matInput placeholder="email@example.com" aria-required [(ngModel)]="newAccount.email" name="email">
-                <!-- <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>  -->
+                <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>  
             </mat-form-field> 
         </p>
         <p>
@@ -43,3 +109,5 @@
 
     </form>
 </div>
+
+ -->

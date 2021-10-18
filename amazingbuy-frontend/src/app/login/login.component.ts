@@ -10,9 +10,8 @@ import { SignAccount } from '../service/sign-account';
   styleUrls: ['./login.component.css'],
 })
 export class LoginComponent implements OnInit {
-  constructor(private as: AccountService, private sa: SignAccount) {}
-
-
+  
+  constructor(private as: AccountService) {}
   signin:any={};
   myform:any={}
   submitted=false;
@@ -31,7 +30,7 @@ export class LoginComponent implements OnInit {
 
   onSuccessSigning(account:Account) {
     //SignAccount. = true;
-    console.log(account);
+    console.log("I CANT BELIEVE ITTTTTTT!");
   }
 
   signIn(email:string, password:string) {
