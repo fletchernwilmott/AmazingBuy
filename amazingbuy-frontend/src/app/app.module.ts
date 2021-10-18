@@ -40,6 +40,7 @@ import { LoginComponent } from './login/login.component';
 import { MatMenuModule } from '@angular/material/menu';
 // MDB Angular Free
 import { MdbFormsModule } from 'mdb-angular-ui-kit/forms';
+import { SellerDashboardComponent } from './seller-dashboard/seller-dashboard.component';
 
 @NgModule({
   declarations: [
@@ -61,6 +62,7 @@ import { MdbFormsModule } from 'mdb-angular-ui-kit/forms';
     AccountViewComponent,
     SignUpComponent,
     LoginComponent,
+    SellerDashboardComponent,
   ],
   imports: [
     BrowserModule,

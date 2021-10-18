@@ -61,7 +61,7 @@ public class OrderController {
 	
 	// 
 	// cancel order / delete
-	@DeleteMapping("/deleteOrder/{id}")
+	@DeleteMapping("/orders/{id}")
 	public String deleteOrder(@PathVariable(value = "id") Long orderId) throws ResourceNotFoundException {
 		Order selectedOrder = orderRepository.findById(orderId)
 				.orElseThrow(() -> new ResourceNotFoundException("Couldn't find an order with that id"));
