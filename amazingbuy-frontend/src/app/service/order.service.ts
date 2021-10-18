@@ -23,16 +23,22 @@ export class OrderService {
     return this.http.post(`${this.baseUrl2}`, order);
   }
   updateOrder(id: number, value: any): Observable<Object> {
-    return this.http.put(`${this.baseUrl2}/${id}`, value);
+    return this.http.put(`${this.baseUrl2}/${id}`, value, {
+      responseType: 'text',
+    });
   }
   cancelOrder(id: number) {
-    return this.http.delete(`${this.baseUrl2}/${id}`);
+    return this.http.delete(`${this.baseUrl2}/${id}`, { responseType: 'text' });
   }
   getAllOrders(): Observable<Order[]> {
     return this.http.get<Order[]>(this.baseUrl2);
   }
   getOrderById(id: number): Observable<any> {
     return this.http.get(`${this.baseUrl}/${id}`);
+  }
+  getOrderByTime(time: string): Observable<any> {
+    const uri = `${this.baseUrl2}date/${time}`;
+    return this.http.get<Order>(uri);
   }
 }
 

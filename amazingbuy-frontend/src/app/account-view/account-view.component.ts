@@ -37,7 +37,7 @@ export class AccountViewComponent implements OnInit {
   getOrdersByAccountId(id: number) {
     this.os
       .getAllOrders()
-      .subscribe((res) => console.log(res.filter((o) => o.account.id === id)));
+      .subscribe((res) => console.log(res.filter((o) => o.account?.id === id)));
   }
 
   onSubmit() {
