@@ -49,6 +49,15 @@ public class Account {
 		super();
 		// TODO Auto-generated constructor stub
 	}
+	
+	public Account(String fullName, String email, String password, String accountType) {
+		super();
+		this.fullName = fullName;
+		this.email = email;
+		this.password = password;
+		this.accountType = accountType;
+	}
+
 	public long getId() {
 		return id;
 	}
