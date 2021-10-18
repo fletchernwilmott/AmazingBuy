@@ -44,6 +44,7 @@ export class ProductService {
     return this.http.put(`${this.baseUrl2}/${id}`, value);
   }
 }
+
 interface GetProducts {
   _embedded: {
     products: Product[];

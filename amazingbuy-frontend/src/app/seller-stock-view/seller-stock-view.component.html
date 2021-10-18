@@ -1,9 +1,14 @@
 <h2>Seller Stock View</h2>
-
-
 <!-- <form (ngSubmit)="onSubmit(products)"> -->
 <table *ngIf="products">
   <tbody>
+    <tr>
+      <th>Item Id</th>
+      <th>Item Name</th>
+      <th>Price</th>
+      <th>Quantity</th>
+    </tr>
+
     <tr *ngFor="let p of products">
 
       <td> <input type="text" readonly class="form-control" name="id" [(ngModel)]="p.id">
@@ -14,7 +19,6 @@
       </td>
       <td> <input type="number" class="form-control" name="productQuantity" [(ngModel)]="p.productQuantity">
       </td>
-      <td>
       <td><button type="submit" class="btn btn-success" (click)="onSubmit(p)">Submit</button></td>
 
     </tr>
