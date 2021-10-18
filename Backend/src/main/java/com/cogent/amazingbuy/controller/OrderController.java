@@ -1,6 +1,8 @@
 package com.cogent.amazingbuy.controller;
 
+import java.net.http.HttpResponse;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.rest.webmvc.ResourceNotFoundException;
@@ -15,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.cogent.amazingbuy.dao.OrderRepository;
+import com.cogent.amazingbuy.model.Account;
 import com.cogent.amazingbuy.model.Order;
 
 @CrossOrigin()
@@ -42,7 +45,6 @@ public class OrderController {
 	// create order
 	@PostMapping("/orders")
 	public String createOrder(@RequestBody Order o) {
-		System.out.println(1);
 		orderRepository.save(o);
 		return "order created";
 	}
@@ -55,6 +57,7 @@ public class OrderController {
 		oldOrder.setId(orderDetails.getId());
 		oldOrder.setPaid(orderDetails.isPaid());
 		oldOrder.setShipped(orderDetails.isShipped());
+		oldOrder.setProducts(orderDetails.getProducts());
 		Order updatedOrder = orderRepository.save(oldOrder);
 		return ResponseEntity.ok(updatedOrder);
 	}
@@ -68,5 +71,13 @@ public class OrderController {
 		orderRepository.delete(selectedOrder);
 		return "Order Deleted!";
 	}
+	
+	@GetMapping("/ordersdate/{timestamp}")
+	public Optional<Order> getOrderByTimeStamp(@PathVariable String timestamp) throws ResourceNotFoundException {
+	Optional<Order> o= Optional.ofNullable(orderRepository.findOrderByTimeStamp(timestamp).orElseThrow(() ->
+	new ResourceNotFoundException
+	("No order found by this time: "+timestamp)));
+      return o;	
+}
 
 }
