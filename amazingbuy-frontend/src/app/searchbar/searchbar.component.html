@@ -1,0 +1,9 @@
+<div class="md-form" (focusin)="show = true" (focusout)="show = false">
+    <input type="search" name="searchText" [(ngModel)]="searchText" placeholder="Search text">
+    <div *ngIf="show">
+        <ul *ngFor="let product of products | filter: searchText">
+            <li class="list" (click)="handleClick(product)">{{product}}</li>
+        </ul>
+    </div>
+</div>
+<!-- (focusout)="show = false" -->
