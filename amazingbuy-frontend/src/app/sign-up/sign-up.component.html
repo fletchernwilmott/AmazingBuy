@@ -34,8 +34,8 @@
             <label>Account Type: </label>
             <mat-radio-group>
                 <mat-radio-button value="seller">Seller</mat-radio-button> -->
-                <!-- <mat-radio-button value="buyer">Buyer</mat-radio-button> -->
-            <!-- </mat-radio-group>
+<!-- <mat-radio-button value="buyer">Buyer</mat-radio-button> -->
+<!-- </mat-radio-group>
         </div>
         <button mat-raised-button color="primary">Primary</button>
 
@@ -44,3 +44,59 @@
 
     </form>
 </div> -->
+<div class="container py-5 ">
+    <div class="row d-flex justify-content-center align-items-center">
+        <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+            <div class="card shadow-2-strong" style="background-color:orange; border-radius: 2rem;">
+                <div class="card-body p-5 text-center">
+                    <h1 class="mb-5">Create New Account</h1>
+                    <form (ngSubmit)="onAddAccount()" #myForm="ngForm">
+                        <div class="form-outline">
+                            <label class="form-label" for="NewFullName">Full Name</label>
+                            <input id="NewFullName" class="form-control form-control-lg" required
+                                [(ngModel)]="newAccount.fullName" name="fullName" />
+                        </div>
+                        <div class="form-outline">
+                            <label class="form-label" for="NewEmail">Email</label>
+                            <input type="email" id="NewEmail" class="form-control form-control-lg" required
+                                [(ngModel)]="newAccount.email" name="email" />
+                        </div>
+                        <div class="form-outline">
+                            <label class="form-label" for="NewPassword">Password</label>
+                            <div class="input-group">
+                                <input type="password" id="NewPassword" class="form-control form-control-lg"
+                                    [type]="hide ? 'password' : 'text'" required [(ngModel)]="newAccount.password"
+                                    name="password" />
+                                <button type (click)="hide=!hide" [attr.aria-label]="'Hide password'"
+                                    [attr.aria-pressed]="hide">
+                                    <i class="bi bi-eye-slash">{{hide ? 'visibility_off' : 'visibility'}}</i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="form-outline">
+                            <label class="form-label" for="NewDateOfBirth">Date Of Birth</label>
+                            <input id="NewDateOfBirth" class="form-control form-control-lg" required
+                                [(ngModel)]="newAccount.dateOfBirth" name="dateOfBirth" />
+                        </div>
+                        <label>Account Type:</label>
+                        <div class="form-check">
+                            <input type="radio" class="form-check-input" value="buyer" name="options" id="radio1"
+                                checked [(ngModel)]="newAccount.accountType" name="accountType">
+                            <label class="form-check-label" for="radio1">Buyer</label>
+                        </div>
+                        <div class="form-check">
+                            <input type="radio" class="form-check-input" value="seller" name="options" id="radio2"
+                                [(ngModel)]="newAccount.accountType" name="accountType">
+                            <label class="form-check-label" for="radio2">Seller</label>
+                        </div>
+                        <button type="submit">Sign
+                            Up</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- [disabled]="!myForm.form.valid" -->
+<!-- class="btn btn-primary btn-lg btn-block" -->

@@ -1,4 +1,4 @@
-<p>login works!</p>
+<!-- <p>login works!</p>
 
 <div class="card">
 	<h1 class="title">Login</h1>
@@ -24,4 +24,30 @@
 			</div>
 		</div>
 	</form>
+</div> -->
+
+<div class="container py-5 h-100">
+	<div class="row d-flex justify-content-center align-items-center h-100">
+		<div class="col-12 col-md-8 col-lg-6 col-xl-5">
+			<div class="card shadow-2-strong" style="border-radius: 1rem;">
+				<div class="card-body p-5 text-center">
+					<h3 class="mb-5" style="text-transform: capitalize; text-shadow: 1px;">Sign in</h3>
+					<form (ngSubmit)="onSubmit()" #myForm="ngForm">
+						<div class="form-outline mb-4">
+							<label class="form-label" for="Email">Email</label>
+							<input type="email" id="Email" class="form-control form-control-lg" placeholder="Email"
+								[(ngModel)]="signin.email" name="Email" />
+						</div>
+						<div class="form-outline mb-4">
+							<label class="form-label" for="Password">Password</label>
+							<input type="password" id="Password" class="form-control form-control-lg"
+								placeholder="Password" [(ngModel)]="signin.password" name="Password" />
+						</div>
+						<button class="btn btn-primary btn-lg btn-block" type="submit"
+							[disabled]="!myForm.form.valid">Login</button>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
 </div>

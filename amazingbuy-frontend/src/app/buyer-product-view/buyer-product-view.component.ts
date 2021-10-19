@@ -39,6 +39,7 @@ export class BuyerProductViewComponent implements OnInit {
   orders!: Order[];
   currentOrder!: Order;
   updatedOrder!: Order;
+  isSeller = true;
 
   date: string = `${new Date().getMonth()}${new Date().getDate()}${new Date().getFullYear()}`;
 

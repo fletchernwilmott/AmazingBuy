@@ -24,6 +24,7 @@ import com.cogent.amazingbuy.dao.ProductRepository;
 import com.cogent.amazingbuy.model.Product;
 
 @CrossOrigin
+//@RequestMapping("/api")
 @RestController
 public class ProductController {
 	

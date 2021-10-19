@@ -13,7 +13,7 @@ import com.cogent.amazingbuy.service.StripeClient;
 import com.stripe.model.Charge;
 @CrossOrigin(origins = "http://localhost:4200")
 @RestController
-@RequestMapping("/payment")
+@RequestMapping("/api/payment")
 public class PaymentController {
 
     private StripeClient stripeClient;

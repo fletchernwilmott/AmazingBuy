@@ -47,6 +47,7 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { ToastComponent } from './toast/toast.component';
 import { SearchbarComponent } from './searchbar/searchbar.component';
 import { FilterPipe } from './filter.pipe';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
 
 @NgModule({
   declarations: [
@@ -101,6 +102,7 @@ import { FilterPipe } from './filter.pipe';
     ModalModule,
     MatBadgeModule,
     MatSnackBarModule,
+    MatAutocompleteModule,
   ],
   providers: [BsModalService],
   bootstrap: [AppComponent],

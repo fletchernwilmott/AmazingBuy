@@ -24,3 +24,4 @@ public class MVCProperties extends WebMvcConfigurerAdapter {
 //                .allowCredentials(true);
 //    }
 }
+	
