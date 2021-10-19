@@ -15,9 +15,9 @@ export class SellerOrderViewComponent implements OnInit {
   constructor(private os: OrderService) {}
 
   ngOnInit(): void {
-    this.getAllOrdrs();
+    this.getAllOrders();
   }
-  getAllOrdrs() {
+  getAllOrders() {
     this.os.getAllOrders().subscribe((res) => {
       this.orders = res;
       this.getProductsPerOrder(this.orders);
@@ -49,7 +49,7 @@ export class SellerOrderViewComponent implements OnInit {
     let priceList: number[] = [];
     products.map((p) => priceList.push(p.productPrice));
     console.log(priceList);
-    console.log(priceList.reduce(reducer));
+    //console.log(priceList.reduce(reducer));
     this.totalCost.push(priceList.reduce(reducer));
     console.log(this.totalCost);
   }

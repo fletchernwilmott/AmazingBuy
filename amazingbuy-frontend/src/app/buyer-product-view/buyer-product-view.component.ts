@@ -69,7 +69,7 @@ export class BuyerProductViewComponent implements OnInit {
 
   signIn() {
     this.as
-      .getAccountByEmailNPassword('rob@gmail.edu', '1234')
+      .getAccountByEmailAndPassword('rob@gmail.edu', '1234')
       .subscribe((res) => {
         this.signedAccount = res;
         // console.log(this.signedAccount.);
@@ -86,7 +86,11 @@ export class BuyerProductViewComponent implements OnInit {
   }
 
   getProductById(id: number) {
-    this.ps.findProductById(id).subscribe((res) => (this.product = res));
+    this.ps.findProductById(id).subscribe((res) => 
+    {
+      console.log(res);
+      (this.product = res)
+    });
   }
 
   onAddToCart(product: Product) {

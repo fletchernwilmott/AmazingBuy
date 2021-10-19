@@ -20,7 +20,21 @@ export class SellerAddProductComponent implements OnInit {
   }
   constructor() {}
 
+  newproduct= new Product();
+  myForm:any={};
+
   ngOnInit(): void {}
+
+  onAddProduct(){
+    console.log("Product Name: "+this.newproduct.name);
+    console.log("Category: "+this.newproduct.category);
+    console.log("Image URL: "+this.newproduct.productImageURL);
+    console.log("Price: "+this.newproduct.productPrice);
+    console.log("Quantity: "+this.newproduct.productQuantity);
+    console.log("Short Description: "+this.newproduct.productShortDescription);
+    console.log("Long Description: "+this.newproduct.productLongDescription);
+    console.log("Rating: "+this.newproduct.productRating);
+  }
 
   createProduct(product: Product) {}
   onAdd() {

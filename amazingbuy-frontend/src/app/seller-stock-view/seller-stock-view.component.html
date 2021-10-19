@@ -3,6 +3,15 @@
 
 <!-- <form (ngSubmit)="onSubmit(products)"> -->
 <table *ngIf="products">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Product Name</th>
+      <th>Cost</th>
+      <th>Price</th>
+      <th>Command</th>
+    </tr>
+  </thead>
   <tbody>
     <tr *ngFor="let p of products">
 
