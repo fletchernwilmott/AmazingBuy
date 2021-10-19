@@ -1,6 +1,17 @@
-import { Component, OnInit } from '@angular/core';
+import {
+  ChangeDetectorRef,
+  Component,
+  ElementRef,
+  OnInit,
+  SimpleChanges,
+  TemplateRef,
+} from '@angular/core';
+import { Router } from '@angular/router';
 import { Order } from '../service/order';
 import { OrderService } from '../service/order.service';
+import { Product } from '../service/product';
+import { Location } from '@angular/common';
+import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 
 export interface ProductElements {
   productId: number;
@@ -14,44 +25,56 @@ export interface ProductElements {
   styleUrls: ['./buyer-cart-view.component.css'],
 })
 export class BuyerCartViewComponent implements OnInit {
-  displayedColumns: string[] = [
-    'productId',
-    'productName',
-    'productPrice',
-    'command',
-  ];
-
-  ELEMENT_DATA: ProductElements[] = [
-    { productId: 1, productName: 'Laptop', productPrice: 1.0 },
-    { productId: 2, productName: 'Mouse', productPrice: 4.0 },
-    { productId: 3, productName: 'Potato', productPrice: 6.99 },
-    { productId: 4, productName: 'Carrot', productPrice: 9.01 },
-    { productId: 5, productName: 'Jeans', productPrice: 10.81 },
-    { productId: 6, productName: 'Shampoo', productPrice: 12.01 },
-    { productId: 7, productName: 'Headphones', productPrice: 14.0 },
-    { productId: 8, productName: 'Videogame', productPrice: 15.99 },
-    { productId: 9, productName: 'Game Tickets', productPrice: 18.94 },
-    { productId: 10, productName: 'Socks', productPrice: 20.17 },
-  ];
-
-  dataSource = this.ELEMENT_DATA;
-
-  constructor(private os: OrderService) {}
+  constructor(private os: OrderService, private modalService: BsModalService) {}
   orders!: Order[];
-  filteredOrders!: Order[];
-  ngOnInit(): void {}
+  currentOrder!: Order;
+  unPaidProducts: Product[] = [];
+  totalCost!: number;
+  modalRef!: BsModalRef;
+  updatedProducts!: Product[];
+  ngOnInit(): void {
+    this.getOrdersByAccountId(1);
+  }
 
-  filterUnpaidOrders() {}
-
-  sumOrdersPrice() {}
-
-  onRemove() {}
+  openModal(template: TemplateRef<any>) {
+    this.modalRef = this.modalService.show(template);
+  }
 
   getOrdersByAccountId(id: number) {
-    this.os
-      .findByAccountId(id)
-      .subscribe((res) =>
-        console.log(`Account 1 orders: ${JSON.stringify(res)}`)
-      );
+    this.os.getAllOrders().subscribe((res) => {
+      this.orders = res.filter((o) => o.paid === false);
+      this.currentOrder = this.orders[this.orders.length - 1];
+      // console.log(this.orders[this.orders.length - 1]);
+      this.getProducts(this.currentOrder);
+      this.sumOrdersPrice(this.unPaidProducts);
+    });
+  }
+
+  getProducts(orders: Order) {
+    this.unPaidProducts = [];
+    orders.products.map((i) => {
+      i ? this.unPaidProducts.push(i) : console.log('product not found');
+    });
+    // console.log(this.unPaidProducts);
+  }
+  sumOrdersPrice(products: Product[]) {
+    const reducer = (previousValue: number, currentValue: number) =>
+      previousValue + currentValue;
+    let priceList: number[] = [];
+    products.map((p) => priceList.push(p.productPrice));
+    // console.log(priceList);
+    // console.log(priceList.reduce(reducer));
+    this.totalCost = priceList.reduce(reducer);
+  }
+
+  onRemove(product: Product) {
+    this.updatedProducts = this.unPaidProducts.filter((p) => p !== product);
+    this.currentOrder.products = this.updatedProducts;
+    this.os.updateOrder(this.currentOrder.id, this.currentOrder).subscribe(
+      (res) => {
+        this.getOrdersByAccountId(1);
+      },
+      (error: any) => console.log(error)
+    );
   }
 }

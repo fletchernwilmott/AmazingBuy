@@ -39,6 +39,14 @@ import { SignUpComponent } from './sign-up/sign-up.component';
 import { MatSelectModule } from '@angular/material/select';
 import { LoginComponent } from './login/login.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { ModalModule, BsModalService } from 'ngx-bootstrap/modal';
+import { MatBadgeModule } from '@angular/material/badge';
+// MDB Angular Free
+import { MdbFormsModule } from 'mdb-angular-ui-kit/forms';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { ToastComponent } from './toast/toast.component';
+import { SearchbarComponent } from './searchbar/searchbar.component';
+import { FilterPipe } from './filter.pipe';
 
 @NgModule({
   declarations: [
@@ -60,6 +68,9 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     AccountViewComponent,
     SignUpComponent,
     LoginComponent,
+    ToastComponent,
+    SearchbarComponent,
+    FilterPipe,
   ],
   imports: [
     BrowserModule,
@@ -86,8 +97,12 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     MatSelectModule,
     MatMenuModule,
     NgbModule,
+    MdbFormsModule,
+    ModalModule,
+    MatBadgeModule,
+    MatSnackBarModule,
   ],
-  providers: [],
+  providers: [BsModalService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

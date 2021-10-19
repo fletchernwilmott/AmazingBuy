@@ -8,6 +8,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 @Entity
 @Table(name="account")
 public class Account {
@@ -30,7 +32,7 @@ public class Account {
 	
 	@Column(name = "date_of_birth")
 	private String dateOfBirth;
-	
+	@JsonIgnore
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "account",orphanRemoval = true)
 	private List<Order> order;
 	

@@ -1,5 +1,5 @@
 <h2>Seller Order View</h2>
-<table class="table">
+<!-- <table class="table">
   <thead class="black white-text">
     <tr>
       <th *ngFor="let head of displayedColumns" scope="col">{{head}}</th>
@@ -14,6 +14,30 @@
       <td><button mdbBtn color="indigo" size="sm" mdbWavesEffect type="button" class="m-0">Cancel</button></td>
     </tr>
   </tbody>
-</table>
+</table> -->
       
 
+<table *ngIf="orders">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Is Paid</th>
+      <th>Is Shipped</th>
+      <th>Shipping Address</th>
+      <th>Command</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let o of orders">
+      <td> <input type="text" readonly class="form-control" name="id" [(ngModel)]="o.id">
+      </td>
+      <td> <input type="text" class="form-control" name="paid" [(ngModel)]="o.paid">
+      </td>
+      <td> <input type="text" class="form-control" name="shipped" [(ngModel)]="o.shipped">
+      </td>
+      <td> <input type="text" readonly class="form-control" name="shippingAddress" [(ngModel)]="o.shippingAddress">
+      </td>
+      <td><button type="submit" class="btn btn-success" (click)="onSubmit(o)">Ship</button></td>
+    </tr>
+  </tbody>
+</table>

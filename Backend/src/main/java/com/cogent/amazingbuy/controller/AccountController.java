@@ -20,21 +20,21 @@ import com.cogent.amazingbuy.model.Account;
 public class AccountController {
 	@Autowired
 	private AccountRepository accountRepository;
-//	@GetMapping("/accounts")
-//	public List<Account> getAccounts() {
-//		List<Account> accountsList = accountRepository.findAll();
-//		return accountsList;
-//	}
+	@GetMapping("/accounts")
+	public List<Account> getAccounts() {
+		List<Account> accountsList = accountRepository.findAll();
+		return accountsList;
+	}
 	
-//	@GetMapping("/accounts/{id}")
-//	public Optional<Account> retrieveAccount(@PathVariable long id)throws ResourceNotFoundException {
-//	    Optional<Account> account = Optional.ofNullable(accountRepository.findById(id)
-//	            .orElseThrow(() -> 
-//	            new ResourceNotFoundException
-//	            ("Account not found for this id : " + id)));
-//	          return account;
-//	}
-//	
+	@GetMapping("/accounts/{id}")
+	public Optional<Account> retrieveAccount(@PathVariable long id)throws ResourceNotFoundException {
+	    Optional<Account> account = Optional.ofNullable(accountRepository.findById(id)
+	            .orElseThrow(() -> 
+	            new ResourceNotFoundException
+	            ("Account not found for this id : " + id)));
+	          return account;
+	}
+	
 	@GetMapping("accounts/{email}/{password}")
 		public Optional<Account> getAccountByNameAndEmail(
 				@PathVariable String email,@PathVariable String password

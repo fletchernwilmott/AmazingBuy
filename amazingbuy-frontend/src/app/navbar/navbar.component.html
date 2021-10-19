@@ -5,6 +5,7 @@
 
         <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
             <span class="navbar-toggler-icon"></span>
+
         </button>
         <div class="collapse navbar-collapse" id="navbarCollapse">
             <form class="d-flex">
@@ -64,6 +65,44 @@
 
 
 
+
+
+
+
+
+        <mat-toolbar class="navbar">
+    <a routerLink="/home"><button id="brand" class="btn btn-success pull-right">
+            <span><b>AmazingBuy</b></span>
+        </button></a>
+    
+
+    <span class="example-spacer">
+    </span>
+    <a routerLink="/login">
+        <button id="signin" class="btn btn-success pull-right">
+            <span>Signin</span>
+        </button>
+    </a>
+    <a routerLink="/signup">
+        <button id="signup" class="btn btn-success pull-right">
+            <span>Signup</span>
+        </button>
+    </a>
+    <button mat-button [matMenuTriggerFor]="menu">My Account</button>
+    <mat-menu #menu="matMenu">
+        <button routerLink="/account" mat-menu-item>Account Info</button>
+        <button routerLink="/orders" mat-menu-item>Orders</button>
+        <button routerLink="/stock" mat-menu-item>Products</button>
+         <button routerLink="/addproduct" mat-menu-item>Add Product</button> 
+        <button routerLink="/dashboard" mat-menu-item>Seller Dashboard</button>
+        <button (click)="onLogout" mat-menu-item>Logout</button>
+    </mat-menu>
+
+    <a routerLink="/cart">
+
+        <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
+            <mat-icon>shopping_cart</mat-icon>
+         <span [matBadge]="productsQuantity" matBadgeOverlap="true"></span> 
 
 
     -->

@@ -1,6 +1,7 @@
 .content {
   padding: 5px;
   cursor: pointer;
+  margin: 5px 40px;
   /* &:hover {
     @include mat-elevation(8);
   } */
