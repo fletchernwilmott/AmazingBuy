@@ -3,8 +3,8 @@ import { Product } from '../service/product';
 import { ProductService } from '../service/product.service';
 
 export interface ProductElements {
-  productId: number;
-  productName: string;
+  id: number;
+  name: string;
   productPrice: number;
   productQuantity: number;
 }

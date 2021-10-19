@@ -41,6 +41,7 @@ export class OrderService {
     return this.http.get<Order>(uri);
   }
 }
+
 interface GetOrders {
   _embedded: {
     orders: Order[];

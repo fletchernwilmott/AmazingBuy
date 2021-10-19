@@ -91,6 +91,9 @@
 
 <div class="Simple example">
     <form (ngSubmit)="onAddAccount()" #myForm="ngForm">
+<p>sign-up works!</p>
+<div class="example-container">
+    <form>
         <p>
             <mat-form-field> 
                 <mat-label>Full Name</mat-label> 
@@ -126,6 +129,10 @@
                 <mat-radio-button value="buyer">Buyer</mat-radio-button>  
                 <mat-radio-button value="seller">Seller</mat-radio-button>  
             </mat-radio-group> 
+            <mat-radio-group>
+                <mat-radio-button value="seller">Seller</mat-radio-button> -->
+                <!-- <mat-radio-button value="buyer">Buyer</mat-radio-button> -->
+            <!-- </mat-radio-group>
         </div>
         <button mat-raised-button color="primary" type="submit" [disabled]="!myForm.form.valid">Sign Up</button>
 

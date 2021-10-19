@@ -13,14 +13,14 @@ public class MVCProperties extends WebMvcConfigurerAdapter {
 //        registry.addMapping("/**").allowedMethods("GET", "POST", "PUT", "DELETE", "HEAD", "OPTIONS");
 //    }
 	
-	@Override
-    public void addCorsMappings(CorsRegistry corsRegistry) {
-        corsRegistry.addMapping("/**")
-                .allowedOrigins("http://localhost:4200")
-                .allowedMethods("*")
-                .maxAge(3600L)
-                .allowedHeaders("*")
-                .exposedHeaders("Authorization")
-                .allowCredentials(true);
-    }
+//	@Override
+//    public void addCorsMappings(CorsRegistry corsRegistry) {
+//        corsRegistry.addMapping("/**")
+//                .allowedOrigins("http://localhost:4200")
+//                .allowedMethods("*")
+//                .maxAge(3600L)
+//                .allowedHeaders("*")
+//                .exposedHeaders("Authorization")
+//                .allowCredentials(true);
+//    }
 }

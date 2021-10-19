@@ -43,6 +43,7 @@ import { ModalModule, BsModalService } from 'ngx-bootstrap/modal';
 import { MatBadgeModule } from '@angular/material/badge';
 // MDB Angular Free
 import { MdbFormsModule } from 'mdb-angular-ui-kit/forms';
+import { SellerDashboardComponent } from './seller-dashboard/seller-dashboard.component';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { ToastComponent } from './toast/toast.component';
 import { SearchbarComponent } from './searchbar/searchbar.component';
@@ -68,6 +69,7 @@ import { FilterPipe } from './filter.pipe';
     AccountViewComponent,
     SignUpComponent,
     LoginComponent,
+    SellerDashboardComponent,
     ToastComponent,
     SearchbarComponent,
     FilterPipe,
