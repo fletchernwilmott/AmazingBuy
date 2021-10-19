@@ -1,21 +1,58 @@
-<div class="m-4">
-    
-        <a routerLink="/"><button class="btn btn-success pull-right">
-                <span><b>AmazingBuy</b></span>
-            </button></a>
-        <!--make brand clickable-->
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+        
+        <a routerLink="/" class="navbar-brand">AmazingBuy</a>
 
-        <span class="example-spacer"></span>
-        <a routerLink="/login">
-            <button class="btn btn-success pull-right">
-                <span>Signin</span>
-            </button>
-        </a>
-        <a routerLink="/signup">
-            <button class="btn btn-success pull-right">
-                <span>Signup</span>
-            </button>
-        </a>
+        <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+            <span class="navbar-toggler-icon"></span>
+
+        </button>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+            <form class="d-flex">
+                <div class="input-group">
+                    <input type="text" class="form-control" placeholder="Search">
+                    <button type="button" class="btn btn-secondary"><i class="bi-search"></i></button>
+                </div>
+            </form>
+            
+            <span class="spacer"></span>
+
+            <div class="navbar-nav ms-auto">
+                <a routerLink="/login" class="nav-item nav-link">Login</a>
+                <a routerLink="/signup" class="nav-item nav-link">Register</a>
+
+
+                <div class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown">My Account</a>
+                    <div class="dropdown-menu">
+                        <a routerLink="/account" class="dropdown-item">Account Info</a>
+                        <a routerLink="/orders" class="dropdown-item">Orders</a>
+                        <a routerLink="/stock" class="dropdown-item">Products</a>
+                        <a routerLink="/addproduct" class="dropdown-item">Add Product</a>
+                        <a routerLink="/dashboard" class="dropdown-item">Seller Dashboard</a>
+                        <a (click)="onLogout" class="dropdown-item">Logout</a>
+                    </div>
+                </div>
+                <a routerLink="/cart">
+                    <i class="bi-cart"></i>
+                </a>
+
+            </div>
+        </div>
+        <!--search bar-->
+        <!--Signin/signup-->
+        <!--on sign in
+    -my account dropdown(buyer:{account-view,orders-view,signout},
+    Seller:{account-view,all-orders,stock-view,dashboard,add-product,logout})
+    -cart(buyer only)
+
+
+
+    <button type="button" class="btn btn-outline">
+            <i class="bi-list"></i>
+        </button>
+
+
         <button mat-button [matMenuTriggerFor]="menu">My Account</button>
         <mat-menu #menu="matMenu">
             <button routerLink="/account" mat-menu-item>Account Info</button>
@@ -26,16 +63,48 @@
             <button (click)="onLogout" mat-menu-item>Logout</button>
         </mat-menu>
 
-        <a routerLink="/cart">
-            <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
-                <mat-icon>shopping_cart</mat-icon>
-            </button>
-        </a>
-        <!--search bar-->
-        <!--Signin/signup-->
-        <!--on sign in
-    -my account dropdown(buyer:{account-view,orders-view,signout},
-    Seller:{account-view,all-orders,stock-view,dashboard,add-product,logout})
-    -cart(buyer only)
+
+
+
+
+
+
+
+        <mat-toolbar class="navbar">
+    <a routerLink="/home"><button id="brand" class="btn btn-success pull-right">
+            <span><b>AmazingBuy</b></span>
+        </button></a>
+    
+
+    <span class="example-spacer">
+    </span>
+    <a routerLink="/login">
+        <button id="signin" class="btn btn-success pull-right">
+            <span>Signin</span>
+        </button>
+    </a>
+    <a routerLink="/signup">
+        <button id="signup" class="btn btn-success pull-right">
+            <span>Signup</span>
+        </button>
+    </a>
+    <button mat-button [matMenuTriggerFor]="menu">My Account</button>
+    <mat-menu #menu="matMenu">
+        <button routerLink="/account" mat-menu-item>Account Info</button>
+        <button routerLink="/orders" mat-menu-item>Orders</button>
+        <button routerLink="/stock" mat-menu-item>Products</button>
+         <button routerLink="/addproduct" mat-menu-item>Add Product</button> 
+        <button routerLink="/dashboard" mat-menu-item>Seller Dashboard</button>
+        <button (click)="onLogout" mat-menu-item>Logout</button>
+    </mat-menu>
+
+    <a routerLink="/cart">
+
+        <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
+            <mat-icon>shopping_cart</mat-icon>
+         <span [matBadge]="productsQuantity" matBadgeOverlap="true"></span> 
+
+
     -->
-</div>
+    </div>
+</nav>

@@ -1,40 +1,68 @@
-<p>seller-add-product works!</p>
-<div class="example-container">
-    <form style="background-color: #F9F3E6; width: 600px;">
-        <mat-form-field appearance="outline">
-            <mat-label>Product Name</mat-label>
-            <input matInput placeholder="Earbuds">
-        </mat-form-field><br>
-        <mat-form-field appearance="outline">
-            <mat-label>Category</mat-label>
-            <mat-select>
-                <mat-option value="one">First option</mat-option>
-                <mat-option value="two">Second option</mat-option>
-            </mat-select>
-        </mat-form-field><br>
-        <mat-form-field appearance="outline">
-            <mat-label>Image URL</mat-label>
-            <input matInput placeholder="Placeholder">
-        </mat-form-field><br>
-        <mat-form-field appearance="outline">
-            <mat-label>Price</mat-label>
-            <input matInput type="number" class="example-right-align" placeholder="0">
-            <!-- <span matPrefix>$&nbsp;</span> -->
-            <span matSuffix>$</span>
-        </mat-form-field><br>
-        <mat-form-field appearance="outline">
-            <mat-label>Quantity</mat-label>
-            <input type="number" matInput placeholder="99">
-            <span matSuffix>Unit</span>
-        </mat-form-field><br>
-        <mat-form-field appearance="outline">
-            <mat-label>Short Description</mat-label>
-            <textarea matInput></textarea>
-        </mat-form-field><br>
-        <mat-form-field appearance="outline">
-            <mat-label>Long Description</mat-label>
-            <textarea matInput></textarea>
-        </mat-form-field>
-        <button mat-raised-button color="primary">Add</button>
-    </form>
+<div class="container py-5 h-100">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+
+        <h1 class="mb-5">Add New Product</h1>
+        <form (ngSubmit)="onAddProduct()" #myForm="ngForm">
+            <div class="form-outline mb-4">
+                <label class="form-label" for="NewProductName">Product Name</label>
+                <input type="text" id="NewProductName" type="text" class="form-control" name="ProductName"
+                    [(ngModel)]="newproduct.name">
+
+            </div>
+            <div class="dropdown mb-6">
+                <button type="button" class="btn btn-secondary dropdown-toggle"
+                    data-bs-toggle="dropdown">Category</button>
+                <div class="dropdown-menu">
+                    <a class="dropdown-item">Action 1</a>
+                    <a class="dropdown-item">Action 2</a>
+                    <a class="dropdown-item">Action 3</a>
+                </div>
+            </div>
+
+            <div class="form-outline mb-4">
+                <label class="form-label" for="NewimageURL">Image URL</label>
+                <input type="text" id="NewimageURL" type="text" class="form-control" name="ImageURL"
+                    [(ngModel)]="newproduct.productImageURL">
+
+            </div>
+            <div class="form-outline mb-4">
+                <label class="form-label" for="NewPrice">Price</label>
+                <input type="text" id="NewPrice" type="text" class="form-control" name="Price"
+                    [(ngModel)]="newproduct.productPrice">
+
+            </div>
+            <div class="form-outline mb-4">
+                <label class="form-label" for="NewQuantity">Quantity</label>
+                <input type="text" id="NewQuantity" type="text" class="form-control" name="Quantity"
+                    [(ngModel)]="newproduct.productQuantity" />
+
+            </div>
+
+            <div class="form-outline mb-4">
+                <label class="form-label" for="NewShortD">Short Description</label>
+                <textarea id="NewShortD" rows="2" class="form-control" name="Short Description"
+                    [(ngModel)]="newproduct.productShortDescription"></textarea>
+
+            </div>
+
+            <div class="form-outline mb-4">
+                <label class="form-label" for="NewLongD">Long Description</label>
+                <textarea id="NewLongD" rows="4" class="form-control" name="Long Description"
+                    [(ngModel)]="newproduct.productLongDescription"></textarea>
+
+            </div>
+
+            <div class="form-outline mb-4">
+                <label class="form-label" for="NewRating">Rating: {{newproduct.productRating}}</label>
+                <input type="range" id="NewRating" class="form-range" name="Rating" min="0" max="5" step="0.1" [(ngModel)]="newproduct.productRating">
+
+            </div>
+
+
+
+            <button class="btn btn-primary">Add</button>
+        </form>
+
+
+    </div>
 </div>

@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Product } from './product';
 import { map } from 'rxjs/operators';
+import { NullTemplateVisitor } from '@angular/compiler';
 
 @Injectable()
 export class ProductService {
@@ -39,7 +40,11 @@ export class ProductService {
   findProductById(id: number): Observable<Product> {
     return this.http.get<Product>(`${this.baseUrl2}/${id}`);
   }
+  updateProduct(id: number, value: any): Observable<Object> {
+    return this.http.put(`${this.baseUrl2}/${id}`, value);
+  }
 }
+
 interface GetProducts {
   _embedded: {
     products: Product[];

@@ -1,6 +1,23 @@
-<mat-grid-list cols="12" rowHeight="120px" class="product-view">
+<div class="card shadow-2-strong" style="border-radius: 2rem;">
+    <img src={{product?product.productImageURL:null}} class="w-100 border-bottom" alt="Sample Image">
 
+    <div class="card-body">
+        <h3 class="card-title">{{product?product.name:null}}</h3>
+        <p class="card-text">{{product?product.productLongDescription:null}}</p>
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item">Category: {{product?product.category.name:"Cannot get name"}}</li>
+            <li class="list-group-item">Quantity: {{product?product.productQuantity:10}}</li>
+            <li class="list-group-item">Rating: {{product?product.productRating:"No ratings available!"}}</li>
+            <li class="list-group-item">Price: {{product?product.productPrice:10}}</li>
+        </ul>
+        <div class="card-body text-center">
+            <a class="card-link"><button type="submit" class="btn btn-success" (click)="onAddToCart(product)">Add to
+                    cart</button></a>
+        </div>
+    </div>
+</div>
 
+<!-- <mat-grid-list cols="12" rowHeight="120px" class="product-view">
     <mat-grid-tile [colspan]="tiles[0].cols" [rowspan]="tiles[0].rows" [style.background]="tiles[0].color">
         <mat-card class="example-card">
             <img id="product-image" mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg"
@@ -11,7 +28,7 @@
     <mat-grid-tile [colspan]="tiles[1].cols" [rowspan]="tiles[1].rows" [style.background]="tiles[1].color">
         <mat-card class="example-card">
             <mat-card-title>{{product?product.name:null}}</mat-card-title>
-            <mat-card-subtitle>{{product?product.category.name:null}}</mat-card-subtitle>
+            <mat-card-subtitle>{{product?product.category.name:null}}</mat-card-subtitle> 
             <mat-card-subtitle>Quantity: {{product?product.productQuantity:null}}</mat-card-subtitle>
             <mat-card-content>
                 <p>Description</p>
@@ -27,3 +44,6 @@
         <button (click)="onAddToCart(product)">Add to cart</button>
     </mat-grid-tile>
 </mat-grid-list>
+<button mat-stroked-button (click)="openSnackBar()">
+    Pizza party
+</button> -->

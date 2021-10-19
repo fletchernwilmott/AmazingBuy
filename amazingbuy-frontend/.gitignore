@@ -34,3 +34,4 @@ build/
 
 ###Properties Files###
 /node_modules
+*.DS_Store

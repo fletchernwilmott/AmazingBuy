@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Product } from '../service/product';
 import { ProductService } from '../service/product.service';
-// import { ProductService } from '../service/product.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-product-list',
@@ -11,14 +11,25 @@ import { ProductService } from '../service/product.service';
 })
 export class ProductListComponent implements OnInit {
   products!: Product[];
-  constructor(private ps: ProductService) {}
+  id!: number;
+  constructor(private ps: ProductService, private route: ActivatedRoute) {}
 
   ngOnInit(): void {
-    this.getAllProducts();
+    this.route.paramMap.subscribe(() => {
+      this.id = this.route.snapshot.params['id'];
+      this.idChecker();
+    });
   }
 
   getAllProducts() {
     this.ps.getAllProducts().subscribe((res) => (this.products = res));
+  }
+
+  idChecker() {
+    !this.id ? this.getAllProducts() : this.getProductsByCategoryId(this.id);
+  }
+  getProductsByCategoryId(id: number) {
+    this.ps.findByCategoryId(id).subscribe((res) => (this.products = res));
   }
 
   searchByNameContaining(name: string) {
@@ -26,4 +37,5 @@ export class ProductListComponent implements OnInit {
       .findByNameContaining(name)
       .subscribe((res) => (this.products = res));
   }
+
 }

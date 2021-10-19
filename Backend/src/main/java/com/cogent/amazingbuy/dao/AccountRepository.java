@@ -19,5 +19,10 @@ public interface AccountRepository extends JpaRepository<Account,Long>{
 	public Optional<Account> getOne(@Param("email") String email, 
 			  @Param("password") String password);
 	
+	@Query
+	(value="FROM Account a WHERE a.email= :email")
+	public Optional<Account> findByEmail(@Param("email") String email);
+	
+	Boolean existsByEmail(String email);
 	
 }

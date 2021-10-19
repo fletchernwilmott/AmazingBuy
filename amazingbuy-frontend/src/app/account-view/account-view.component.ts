@@ -9,36 +9,43 @@ import { OrderService } from '../service/order.service';
   styleUrls: ['./account-view.component.css'],
 })
 export class AccountViewComponent implements OnInit {
-  accounts!: Account[];
+  // account!: Account;
   signedAccount!: Account;
+  id!: number;
 
   constructor(private as: AccountService, private os: OrderService) {}
 
   ngOnInit(): void {
     this.signIn();
-    // this.getOrdersByAccountId(this.signedAccount.id);
+    this.getOrdersByAccountId(1);
   }
-  getAllAccounts() {
-    this.as.getAllAccounts().subscribe((res) => (this.accounts = res));
-  }
+  // getAllAccounts() {
+  //   this.as.getAllAccounts().subscribe((res) => (this.accounts = res));
+  // }
   //this method will be moved to signIn-view
   signIn() {
     this.as
-      .getAccountByEmailAndPassword('rob@gmail.com', 'rob')
+      .getAccountByEmailAndPassword('rob@gmail.edu', '1234')
       .subscribe((res) => {
         this.signedAccount = res;
         // console.log(this.signedAccount.);
-        this.getOrdersByAccountId(this.signedAccount.id);
       });
   }
+
   getAccountById() {}
 
   getOrdersByAccountId(id: number) {
     this.os
-      .findByAccountId(id)
-      .subscribe((res) =>
-        console.log(`Account 1 orders: ${JSON.stringify(res)}`)
-      );
+      .getAllOrders()
+      .subscribe((res) => console.log(res.filter((o) => o.account?.id === id)));
+  }
+
+  onSubmit() {
+    console.log(this.signedAccount);
+    this.as.updateAccount(this.signedAccount.id, this.signedAccount).subscribe(
+      (res) => console.log(res),
+      (error) => console.log(error)
+    );
   }
 
   getSignedAccountDetails() {

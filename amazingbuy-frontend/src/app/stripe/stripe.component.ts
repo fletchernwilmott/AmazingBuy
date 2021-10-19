@@ -1,6 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { loadStripe } from '@stripe/stripe-js';
+import { Order } from '../service/order';
+import { OrderService } from '../service/order.service';
 
 @Component({
   selector: 'app-stripe',
@@ -8,13 +10,15 @@ import { loadStripe } from '@stripe/stripe-js';
   styleUrls: ['./stripe.component.css'],
 })
 export class StripeComponent implements OnInit {
+  @Input() totalCost!: number;
+  @Input() currentOrder!: Order;
   submitted!: boolean;
   formProcess!: boolean;
   message!: string;
 
   token!: string;
   // number!: any;
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private os: OrderService) {}
   // handler: any = null;
   ngOnInit(): void {}
 
@@ -36,16 +40,29 @@ export class StripeComponent implements OnInit {
       }
     );
   }
-
+  markOrderAsPaid() {
+    this.currentOrder.paid = true;
+    this.os.updateOrder(this.currentOrder.id, this.currentOrder).subscribe(
+      (res) => {
+        //feedback
+      },
+      (error: any) => console.log(error)
+    );
+  }
   chargeCard(token: any) {
-    const headers = new HttpHeaders({ token: token, amount: '0.5' });
+    const headers = new HttpHeaders({
+      token: token,
+      amount: `${this.totalCost}`,
+    });
     this.http
       .post(
         'http://localhost:8080/payment/charge',
         { observe: 'response' },
         { headers: headers }
       )
-
-      .subscribe((res) => console.log(res));
+      .subscribe((res) => {
+        this.markOrderAsPaid();
+        console.log(res);
+      });
   }
 }

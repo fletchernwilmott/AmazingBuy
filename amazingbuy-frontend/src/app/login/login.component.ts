@@ -10,11 +10,10 @@ import { SignAccount } from '../service/sign-account';
   styleUrls: ['./login.component.css'],
 })
 export class LoginComponent implements OnInit {
-  constructor(private as: AccountService, private sa: SignAccount) {}
-
-
+  
+  constructor(private as: AccountService) {}
   signin:any={};
-  myform:any={}
+  myForm:any={};
   submitted=false;
 
   ngOnInit(): void {
@@ -22,16 +21,16 @@ export class LoginComponent implements OnInit {
   }
   
   
-  onSubmit() {
+  onSubmit():void {
     this.submitted = true;
-    console.log('Email: ' + this.signin.email);
-    console.log('Password: ' + this.signin.password);
-    this.signIn(this.signin.email, this.signin.password);
+    console.log('Email: ' + this.signin.Email);
+    console.log('Password: ' + this.signin.Password);
+    this.signIn(this.signin.Email, this.signin.Password);
   }
 
   onSuccessSigning(account:Account) {
     //SignAccount. = true;
-    console.log(account);
+    console.log("Success!");
   }
 
   signIn(email:string, password:string) {

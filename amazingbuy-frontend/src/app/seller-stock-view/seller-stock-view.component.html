@@ -1,40 +1,38 @@
 <h2>Seller Stock View</h2>
-<table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+<!-- <form (ngSubmit)="onSubmit(products)"> -->
+<table *ngIf="products">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Product Name</th>
+      <th>Cost</th>
+      <th>Price</th>
+      <th>Command</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Item Id</th>
+      <th>Item Name</th>
+      <th>Price</th>
+      <th>Quantity</th>
+    </tr>
 
-    <!--- Note that these columns can be defined in any order.
-          The actual rendered columns are set as a property on the row definition" -->
-  
-    <!-- Position Column -->
-    <ng-container matColumnDef="productId">
-      <th mat-header-cell *matHeaderCellDef> Product Id No. </th>
-      <td mat-cell *matCellDef="let element"> {{element.productId}} </td>
-    </ng-container>
-  
-    <!-- Name Column -->
-    <ng-container matColumnDef="productName">
-      <th mat-header-cell *matHeaderCellDef> Product Name </th>
-      <td mat-cell *matCellDef="let element"> {{element.productName}} </td>
-    </ng-container>
-  
-    <!-- Weight Column -->
-    <ng-container matColumnDef="productPrice">
-      <th mat-header-cell *matHeaderCellDef> Price </th>
-      <td mat-cell *matCellDef="let element"><input type="number" min=0.01 step=0.01 value="{{element.productPrice}}"> </td>
-    </ng-container>
-  
-    <ng-container matColumnDef="productQuantity">
-        <th mat-header-cell *matHeaderCellDef> Quantity </th>
-        <td mat-cell *matCellDef="let element"> {{element.productQuantity}} </td>
-    </ng-container>
+    <tr *ngFor="let p of products">
 
-    <ng-container matColumnDef="edit">
-        <th mat-header-cell *matHeaderCellDef> Edit </th>
-        <td mat-cell *matCellDef="let element">
-            <button>Edit</button>
-        </td>
-    </ng-container>
-  
-    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-  </table>
-  
+      <td> <input type="text" readonly class="form-control" name="id" [(ngModel)]="p.id">
+      </td>
+      <td> <input type="text" readonly class="form-control" name="name" [(ngModel)]="p.name">
+      </td>
+      <td> <input type="number" class="form-control" name="productPrice" [(ngModel)]="p.productPrice">
+      </td>
+      <td> <input type="number" class="form-control" name="productQuantity" [(ngModel)]="p.productQuantity">
+      </td>
+      <td><button type="submit" class="btn btn-success" (click)="onSubmit(p)">Submit</button></td>
+
+    </tr>
+
+  </tbody>
+
+</table>
+<!-- </form> -->
