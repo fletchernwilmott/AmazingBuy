@@ -12,7 +12,7 @@ export class OrderService {
   constructor(private http: HttpClient) {}
 
   private baseUrl = 'http://localhost:8080/order';
-  private baseUrl2 = 'http://localhost:8080/orders';
+  private baseUrl2 = 'http://localhost:8080/api/orders';
   findByAccountId(id: number): Observable<Order[]> {
     const uri = `${this.baseUrl}/search/findByAccountId?id=${id}`;
     return this.http

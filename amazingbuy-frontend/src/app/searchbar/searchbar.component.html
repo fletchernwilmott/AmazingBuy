@@ -1,9 +1,14 @@
-<div class="md-form" (focusin)="show = true" (focusout)="show = false">
+<!-- <div class="md-form" (focusin)="show = true" (focusout)="show = false">
     <input type="search" name="searchText" [(ngModel)]="searchText" placeholder="Search text">
     <div *ngIf="show">
-        <ul *ngFor="let product of products | filter: searchText">
-            <li class="list" (click)="handleClick(product)">{{product}}</li>
-        </ul>
+        <p *ngFor="let product of products | filter: searchText">
+            <a class="list" (click)="handleClick(product)">{{product}}</a>
+        </p>
     </div>
-</div>
+</div> -->
 <!-- (focusout)="show = false" -->
+
+<input type="text" (keyup)="getUserIdsFirstWay($event)" id="userIdFirstWay" list="dynmicUserIds" />
+<datalist id="dynmicUserIds">
+    <option *ngFor="let item of products" [value]="item">{{item}}</option>
+</datalist>
