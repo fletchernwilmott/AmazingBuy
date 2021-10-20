@@ -6,12 +6,12 @@
     <app-searchbar></app-searchbar>
     <span class="example-spacer">
     </span>
-    <a routerLink="/login">
+    <a *ngIf="!signedAccount" routerLink="/login">
         <button id="signin" class="btn btn-success pull-right">
             <span>Signin</span>
         </button>
     </a>
-    <a routerLink="/signup">
+    <a *ngIf="!signedAccount" routerLink="/signup">
         <button id="signup" class="btn btn-success pull-right">
             <span>Signup</span>
         </button>
@@ -23,13 +23,12 @@
         <button *ngIf="isSeller" routerLink="/stock" mat-menu-item>Products</button>
         <!-- <button routerLink="/addproduct" mat-menu-item>Add Product</button> -->
         <button *ngIf="isSeller" routerLink="/dashboard" mat-menu-item>Seller Dashboard</button>
-        <button (click)="onLogout" mat-menu-item>Logout</button>
+        <button (click)="onLogout()" mat-menu-item>Logout</button>
     </mat-menu>
 
     <a routerLink="/cart">
 
-        <button *ngIf="isSeller,signedAccount" mat-icon-button class="example-icon"
-            aria-label="Example icon-button with share icon">
+        <button *ngIf="isBuyer" mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
             <mat-icon>shopping_cart</mat-icon>
             <!-- <span [matBadge]="productsQuantity" matBadgeOverlap="true"></span> -->
         </button>

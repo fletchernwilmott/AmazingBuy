@@ -47,8 +47,6 @@ public class AuthController {
 
 	@PostMapping("/signin")
 	public ResponseEntity<?> authenticateUser(@Valid @RequestBody LoginRequest loginRequest) {
-		System.out.println(loginRequest.getEmail());
-
 		Authentication authentication = authenticationManager.authenticate(
 				new UsernamePasswordAuthenticationToken(loginRequest.getEmail(), loginRequest.getPassword()));
 
@@ -79,11 +77,9 @@ public class AuthController {
 		// Create new user's account
 		Account user = new Account(signUpRequest.getFullName(), 
 							 signUpRequest.getEmail(),
-							 encoder.encode(signUpRequest.getPassword()), signUpRequest.getAccountType());
+							 encoder.encode(signUpRequest.getPassword()), signUpRequest.getAccountType(),signUpRequest.getDateOfBirth());
 
 		accountRepository.save(user);
-		// mail service to send plain text mail to user's email account about successful
-		// registration
 		return ResponseEntity.ok(new MessageResponse("User registered successfully!"));
 	}
 }
