@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Account } from '../service/account';
+import { AccountService } from '../service/account.service';
 import { Order } from '../service/order';
 import { OrderService } from '../service/order.service';
 import { Product } from '../service/product';
@@ -12,11 +14,47 @@ export class SellerOrderViewComponent implements OnInit {
   orders!: Order[];
   price!: number;
   totalCost: number[] = [];
-  constructor(private os: OrderService) {}
+
+  signedAccount!: Account;
+  accountId: any = sessionStorage.getItem('id')
+    ? sessionStorage.getItem('id')
+    : 0;
+  signedId: number = this.accountId;
+
+  constructor(private os: OrderService, private as: AccountService) {}
 
   ngOnInit(): void {
-    this.getAllOrdrs();
+    // this.getAllOrdrs();
+    this.getAccountById(this.signedId);
+    // this.accountTypeChecker(this.signedId);
   }
+
+  getAccountById(id: number) {
+    this.as.getAccountById(id).subscribe((res) => {
+      this.signedAccount = res;
+      if (this.signedAccount.accountType.toLowerCase() === 'buyer') {
+        this.getOrdersByAccountId(id);
+      } else {
+        this.getAllOrdrs();
+      }
+    });
+  }
+
+  accountTypeChecker(id: number) {}
+
+  getOrdersByAccountId(id: number) {
+    this.os.findByAccountId(id).subscribe((res) => {
+      this.orders = res;
+      console.log(res);
+      // this.currentOrder = this.orders[this.orders.length - 1];
+      // console.log(this.currentOrder);
+      // this.selectedProduct = this.currentOrder.products;
+      // console.log(this.selectedProduct);
+      // this.getProducts(this.orders);
+      // this.sumOrdersPrice(this.unPaidProducts);
+    });
+  }
+
   getAllOrdrs() {
     this.os.getAllOrders().subscribe((res) => {
       this.orders = res;

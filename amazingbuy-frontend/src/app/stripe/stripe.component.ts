@@ -56,7 +56,7 @@ export class StripeComponent implements OnInit {
     });
     this.http
       .post(
-        'http://localhost:8080/api/payment/charge',
+        'http://localhost:8080/payment/charge',
         { observe: 'response' },
         { headers: headers }
       )

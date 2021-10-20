@@ -32,8 +32,10 @@ export class BuyerCartViewComponent implements OnInit {
   totalCost!: number;
   modalRef!: BsModalRef;
   updatedProducts!: Product[];
+  id: any = sessionStorage.getItem('id') ? sessionStorage.getItem('id') : '1';
+  signedId: number = this.id;
   ngOnInit(): void {
-    this.getOrdersByAccountId(1);
+    this.getOrdersByAccountId(this.signedId);
   }
 
   openModal(template: TemplateRef<any>) {

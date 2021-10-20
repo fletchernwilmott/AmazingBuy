@@ -4,6 +4,7 @@ import { AccountViewComponent } from './account-view/account-view.component';
 import { BuyerCartViewComponent } from './buyer-cart-view/buyer-cart-view.component';
 import { BuyerProductViewComponent } from './buyer-product-view/buyer-product-view.component';
 import { LoginComponent } from './login/login.component';
+import { NavbarComponent } from './navbar/navbar.component';
 import { ProductListComponent } from './product-list/product-list.component';
 import { SellerAddProductComponent } from './seller-add-product/seller-add-product.component';
 import { SellerOrderViewComponent } from './seller-order-view/seller-order-view.component';
@@ -26,6 +27,7 @@ const routes: Routes = [
   { path: 'orders', component: SellerOrderViewComponent },
   { path: 'stock', component: SellerStockViewComponent },
   { path: 'addproduct', component: SellerAddProductComponent },
+  { path: 'navbar', component: NavbarComponent },
 ];
 
 @NgModule({

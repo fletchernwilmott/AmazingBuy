@@ -1,11 +1,11 @@
-<h2>Seller Order View</h2>
+<h2>Order View</h2>
 <table *ngIf="orders">
   <thead>
     <tr>
       <th>ID</th>
       <th>Is Paid</th>
       <!-- <th>Cost</th> -->
-      <th>Ship</th>
+      <th *ngIf="signedAccount.accountType==='Seller'">Ship</th>
     </tr>
   </thead>
   <tbody>
@@ -18,7 +18,8 @@
       </td> -->
       <!-- <td> <input type="number" readonly class="form-control" name="price" value="10.99" [(ngModel)]="price">
       </td> -->
-      <td><button type="submit" class="btn btn-success" (click)="onSubmit(o)">Ship</button></td>
+      <td><button *ngIf="signedAccount.accountType==='seller'" type="submit" class="btn btn-success"
+          (click)="onSubmit(o)">Ship</button></td>
     </tr>
   </tbody>
 </table>

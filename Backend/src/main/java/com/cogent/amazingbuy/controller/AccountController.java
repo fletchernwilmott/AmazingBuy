@@ -5,6 +5,7 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -22,6 +23,8 @@ import com.cogent.amazingbuy.model.Account;
 public class AccountController {
 	@Autowired
 	private AccountRepository accountRepository;
+	@Autowired
+	PasswordEncoder encoder;
 	@GetMapping("/accounts")
 	public List<Account> getAccounts() {
 		List<Account> accountsList = accountRepository.findAll();
@@ -60,7 +63,7 @@ public class AccountController {
 		            ("Account not found for this id : " + id));
 		accountDetails.setFullName(account.getFullName());
 		accountDetails.setEmail(account.getEmail());
-		accountDetails.setPassword(account.getPassword());
+		accountDetails.setPassword(encoder.encode(account.getPassword()));
 		accountRepository.save(accountDetails);
 		return "Updated successfully!";
 	}

@@ -21,7 +21,7 @@
             </mat-card-actions>
         </mat-card>
     </mat-grid-tile>
-    <mat-grid-tile *ngIf="isSeller" [colspan]="tiles[2].cols" [rowspan]="tiles[2].rows"
+    <mat-grid-tile *ngIf="isBuyer" [colspan]="tiles[2].cols" [rowspan]="tiles[2].rows"
         [style.background]="tiles[2].color">
         <button (click)="onAddToCart(product)">Add to cart</button>
     </mat-grid-tile>
